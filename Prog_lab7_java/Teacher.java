@@ -8,7 +8,7 @@ public class Teacher
 	private int workExp;
 	private String degree;
 	private String facultyName;
-	public Human teacherHuman = new Human();
+	public Human humanField = new Human();
 
 	//Methods
 	public boolean setWorkExp(int buf)
@@ -39,7 +39,6 @@ public class Teacher
 		return (false);
 	}
 
-
 	public boolean setFacultyName(String bufString)
 	{
 		if (bufString.isEmpty()) 
@@ -58,20 +57,19 @@ public class Teacher
 	}
 
 	public int getWorkExp()
-	{return (workExp);}
+	{
+		return (workExp);
+	}
 
 	public String getDegree()
 	{
-		String outputString = String.copyValueOf(degree.toCharArray());
-		return (outputString);
+		return (String.copyValueOf(degree.toCharArray()));
 	}
 
 	public String getFacultyName()
 	{
-		String outputString = String.copyValueOf(facultyName.toCharArray());
-		return (outputString);
+		return (String.copyValueOf(facultyName.toCharArray()));
 	}
-
 	
 	public boolean init(int bufWorkExp, String bufDegree, String bufFacultyName, Human bufHuman)
 	{
@@ -84,8 +82,8 @@ public class Teacher
 			this.setWorkExp(bufWorkExp);
 			this.setDegree(bufDegree);
 			this.setFacultyName(bufFacultyName);
-			this.teacherHuman.init(bufHuman.getId(), bufHuman.getAge(), 
-			bufHuman.getHeight(), bufHuman.getWeight(),bufHuman.getGender(), bufHuman.humanFio);
+			this.humanField.init(bufHuman.getId(), bufHuman.getAge(),
+			bufHuman.getHeight(), bufHuman.getWeight(),bufHuman.getGender(), bufHuman.fioField);
 			return (false);
 		}
 	}
@@ -93,57 +91,43 @@ public class Teacher
 	public boolean read()
 	{
 		Teacher check = new Teacher();
-
 		Scanner scanner = new Scanner(System.in);
-		System.out.printf("Enter scientific degree:\n");
+
+		System.out.print("Enter scientific degree:\n");
 		if (!scanner.hasNextLine())
 			return (true);
-		else
-		{
-			if (check.setDegree(scanner.nextLine()))
-				return (true);	
-			else 
-			{
-				System.out.printf("Enter faculty name:\n");
-				if (!scanner.hasNextLine())
-					return (true);
-				else
-				{
-					if (check.setFacultyName(scanner.nextLine()))
-						return (true);
-					else 
-					{
-						System.out.printf("Enter working experience:\n");
-						if (!scanner.hasNextInt())
-							return (true);
-						else 
-						{
-							if (check.setWorkExp(scanner.nextInt()))
-								return (true);
-							else
-							{
-								if (check.teacherHuman.read())
-									return(true);
-								else
-								{
-									this.init(check.getWorkExp(), check.getDegree(), 
-									check.getFacultyName(), check.teacherHuman);
-									return(false);
-								}
-							}
-						}
-					}		
-				}
-			}
-		}
-	}
+		if (check.setDegree(scanner.nextLine()))
+			return (true);
 
+
+		System.out.print("Enter faculty name:\n");
+		if (!scanner.hasNextLine())
+			return (true);
+		if (check.setFacultyName(scanner.nextLine()))
+			return (true);
+
+
+		System.out.print("Enter working experience:\n");
+		if (!scanner.hasNextInt())
+			return (true);
+		if (check.setWorkExp(scanner.nextInt()))
+			return (true);
+
+
+		if (check.humanField.read())
+			return(true);
+
+
+		this.init(check.getWorkExp(), check.getDegree(),
+				check.getFacultyName(), check.humanField);
+		return(false);
+	}
 
 	public void display()
 	{
 		System.out.printf("working experience: %d years\n", workExp);
 		System.out.printf("scientific degree: %s\n",degree);
 		System.out.printf("faculty name: %s\n", facultyName);
-		teacherHuman.display();
+		humanField.display();
 	}
 }

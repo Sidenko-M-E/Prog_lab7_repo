@@ -61,26 +61,20 @@ public class Fio
 		return (false);
 	}
 
-
 	public String getSurname()
 	{
-		String outputString = String.copyValueOf(surname.toCharArray());
-		return (outputString);
+		return (String.copyValueOf(surname.toCharArray()));
 	}
 
 	public String getName()
 	{
-		String outputString = String.copyValueOf(name.toCharArray());
-		return (outputString);
+		return (String.copyValueOf(name.toCharArray()));
 	}
 
 	public String getPatronymic()
 	{
-		String outputString = String.copyValueOf(patronymic.toCharArray());
-		return (outputString);
+		return (String.copyValueOf(patronymic.toCharArray()));
 	}
-
-
 
 	public boolean init(String bufSurname, String bufName, String bufPatronymic)
 	{
@@ -100,45 +94,32 @@ public class Fio
 	public boolean read()
 	{
 		Fio check = new Fio();
-
-		System.out.printf("Enter surname:\n");
 		Scanner scanner = new Scanner(System.in);
+
+
+		System.out.print("Enter surname:\n");
 		if (!scanner.hasNextLine())
 			return (true);
-		else
-		{
-			if (check.setSurname(scanner.nextLine()))
-				return (true);
-			else 
-			{
-				System.out.printf("Enter name:\n");
-				if (!scanner.hasNextLine())
-					return (true);
-				else
-				{
-					if (check.setName(scanner.nextLine()))
-						return (true);
-					else 
-					{
-						System.out.printf("Enter patronymic:\n");
-						if (!scanner.hasNextLine())
-							return (true);
-						else
-						{
-							if (check.setPatronymic(scanner.nextLine()))
-								return (true);
-							else 
-							{
-								this.setSurname(check.getSurname());
-								this.setName(check.getName());
-								this.setPatronymic(check.getPatronymic());
-								return (false);
-							}
-						}
-					}
-				}
-			}
-		}
+		if (check.setSurname(scanner.nextLine()))
+			return (true);
+
+
+		System.out.print("Enter name:\n");
+		if (!scanner.hasNextLine())
+			return (true);
+		if (check.setName(scanner.nextLine()))
+			return (true);
+
+
+		System.out.print("Enter patronymic:\n");
+		if (!scanner.hasNextLine())
+			return (true);
+		if (check.setPatronymic(scanner.nextLine()))
+			return (true);
+
+
+		this.init(check.getSurname(), check.getName(), check.getPatronymic());
+		return (false);
 	}
 
 	public void display()

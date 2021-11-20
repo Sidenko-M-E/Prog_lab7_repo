@@ -9,7 +9,7 @@ public class Student
 	private	String eduProg;
 	private String group;
 	private String facultyName;
-	public Human studentHuman = new Human();  
+	public Human humanField = new Human();
 
 	//Methods
 	public boolean setCourse(int buf)
@@ -75,26 +75,24 @@ public class Student
 	}
 
 	public int getCourse()
-	{return(course);}
+	{
+		return(course);
+	}
 
 	public String getEduProg()
 	{
-		String outputString = String.copyValueOf(eduProg.toCharArray());
-		return (outputString);
+		return (String.copyValueOf(eduProg.toCharArray()));
 	}
 
 	public String getGroup()
 	{
-		String outputString = String.copyValueOf(group.toCharArray());
-		return (outputString);
+		return (String.copyValueOf(group.toCharArray()));
 	}
 
 	public String getFacultyName()
 	{
-		String outputString = String.copyValueOf(facultyName.toCharArray());
-		return (outputString);
+		return (String.copyValueOf(facultyName.toCharArray()));
 	}
-
 
 	public boolean init(int bufCourse, String bufEduProg, String bufGroup, String bufFacultyName, Human bufHuman)
 	{
@@ -109,8 +107,8 @@ public class Student
 			this.setEduProg(bufEduProg);
 			this.setGroup(bufGroup);
 			this.setFacultyName(bufFacultyName);
-			this.studentHuman.init(bufHuman.getId(), bufHuman.getAge(), 
-			bufHuman.getHeight(), bufHuman.getWeight(),bufHuman.getGender(), bufHuman.humanFio);
+			this.humanField.init(bufHuman.getId(), bufHuman.getAge(),
+			bufHuman.getHeight(), bufHuman.getWeight(),bufHuman.getGender(), bufHuman.fioField);
 			return (false);
 		}
 	}
@@ -118,60 +116,43 @@ public class Student
 	public boolean read()
 	{
 		Student check = new Student();
-
 		Scanner scanner = new Scanner(System.in);
-		System.out.printf("Enter education programm:\n");
+
+		System.out.print("Enter education programme:\n");
 		if (!scanner.hasNextLine())
 			return (true);
-		else
-		{
-			if (check.setEduProg(scanner.nextLine()))
-				return (true);	
-			else 
-			{
-				System.out.printf("Enter group:\n");
-				if (!scanner.hasNextLine())
-					return (true);
-				else
-				{
-					if (check.setGroup(scanner.nextLine()))
-						return (true);
-					else 
-					{
-						System.out.printf("Enter faculty name:\n");
-						if (!scanner.hasNextLine())
-							return (true);
-						else
-						{
-							if (check.setFacultyName(scanner.nextLine()))
-								return (true);
-							else 
-							{
-								System.out.printf("Enter course:\n");
-								if (!scanner.hasNextInt())
-									return (true);
-								else 
-								{
-									if (check.setCourse(scanner.nextInt()))
-										return (true);
-									else
-									{
-										if (check.studentHuman.read())
-											return(true);
-										else
-										{
-											this.init(check.getCourse(), check.getEduProg(), check.getGroup(), 
-											check.getFacultyName(), check.studentHuman);
-											return(false);
-										}
-									}
-								}
-							}
-						}
-					}		
-				}
-			}
-		}
+		if (check.setEduProg(scanner.nextLine()))
+			return (true);
+
+
+		System.out.print("Enter group:\n");
+		if (!scanner.hasNextLine())
+			return (true);
+		if (check.setGroup(scanner.nextLine()))
+			return (true);
+
+
+		System.out.print("Enter faculty name:\n");
+		if (!scanner.hasNextLine())
+			return (true);
+		if (check.setFacultyName(scanner.nextLine()))
+			return (true);
+
+
+		System.out.print("Enter course:\n");
+		if (!scanner.hasNextInt())
+			return (true);
+		if (check.setCourse(scanner.nextInt()))
+			return (true);
+
+
+		if (check.humanField.read())
+			return(true);
+
+
+		this.init(check.getCourse(), check.getEduProg(), check.getGroup(),
+				check.getFacultyName(), check.humanField);
+		return(false);
 	}
 
 	void display()
@@ -180,6 +161,6 @@ public class Student
 		System.out.printf("direction of preparation: %s\n", eduProg);
 		System.out.printf("group: %s\n", group);
 		System.out.printf("faculty name: %s\n", facultyName);
-		studentHuman.display();
+		humanField.display();
 	}
 }

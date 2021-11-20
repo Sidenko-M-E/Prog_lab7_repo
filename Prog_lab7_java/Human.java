@@ -1,7 +1,6 @@
 package Prog_lab5;
 
 import java.util.*;
-import java.lang.Math.*;
 
 public class Human
 {
@@ -11,7 +10,7 @@ public class Human
 	private int height;
 	private double weight;
 	private char gender;
-	public Fio humanFio = new Fio();
+	public Fio fioField = new Fio();
 
 	//Methods
 	public boolean setId(int buf)
@@ -72,20 +71,29 @@ public class Human
 	}
 
 	public int getId()
-	{return (id);}
+	{
+		return (id);
+	}
 
 	public int getAge()
-	{return (age);}
+	{
+		return (age);
+	}
 
 	public int getHeight()
-	{return (height);}
+	{
+		return (height);
+	}
 
 	public double getWeight()
-	{return (weight);}
+	{
+		return (weight);
+	}
 
 	public char getGender()
-	{return (gender);}
-	
+	{
+		return (gender);
+	}
 
 	public boolean init(int bufId, int bufAge, int bufHeight, double bufWeight, char bufGender, Fio bufFio)
 	{
@@ -101,7 +109,7 @@ public class Human
 			this.setHeight(check.getHeight());
 			this.setWeight(check.getWeight());
 			this.setGender(check.getGender());
-			this.humanFio.init(bufFio.getSurname(), bufFio.getName(), bufFio.getPatronymic());
+			this.fioField.init(bufFio.getSurname(), bufFio.getName(), bufFio.getPatronymic());
 			return (false);
 		}
 	}
@@ -109,71 +117,48 @@ public class Human
 	public boolean read()
 	{
 		Human check = new Human();
-
-		System.out.printf("Enter id:\n");
 		Scanner scanner = new Scanner(System.in);
+
+		System.out.print("Enter id:\n");
 		if (!scanner.hasNextInt())
 			return (true);
-		else 
-		{
-			if (check.setId(scanner.nextInt()))
-				return (true);
-			else
-			{
-				System.out.printf("Enter age:\n");
-				if (!scanner.hasNextInt())
-					return (true);
-				else 
-				{
-					if (check.setAge(scanner.nextInt()))
-						return (true);
-					else
-					{
-						System.out.printf("Enter height:\n");
-						if (!scanner.hasNextInt())
-							return (true);
-						else 
-						{
-							if (check.setHeight(scanner.nextInt()))
-								return (true);
-							else
-							{
-								System.out.printf("Enter weight:\n");
-								if (!scanner.hasNextDouble())
-									return (true);
-								else 
-								{
-									if (check.setWeight(scanner.nextDouble()))
-										return (true);
-									else
-									{		 
-										System.out.printf("Enter gender:\n");
-										if(check.setGender(scanner.next(".").charAt(0)))
-											return (true);
-										else
-										{
-											if (check.humanFio.read())
-												return (true);
-											else
-											{
-												this.init(
-												check.getId(), 
-												check.getAge(), 
-												check.getHeight(), 
-												check.getWeight(), 
-												check.getGender(), 
-												check.humanFio);
-												return(false);
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+		if (check.setId(scanner.nextInt()))
+			return (true);
+
+
+		System.out.print("Enter age:\n");
+		if (!scanner.hasNextInt())
+			return (true);
+		if (check.setAge(scanner.nextInt()))
+			return (true);
+
+
+		System.out.print("Enter height:\n");
+		if (!scanner.hasNextInt())
+			return (true);
+		if (check.setHeight(scanner.nextInt()))
+			return (true);
+
+
+		System.out.print("Enter weight:\n");
+		if (!scanner.hasNextDouble())
+			return (true);
+		if (check.setWeight(scanner.nextDouble()))
+			return (true);
+
+
+		System.out.print("Enter gender:\n");
+		if(check.setGender(scanner.next(".").charAt(0)))
+			return (true);
+
+
+		if (check.fioField.read())
+			return (true);
+
+
+		this.init(check.getId(), check.getAge(), check.getHeight(),
+				check.getWeight(), check.getGender(), check.fioField);
+		return(false);
 	}
 
 	public void display()
@@ -183,6 +168,6 @@ public class Human
 		System.out.printf("height: %d\n", height);
 		System.out.printf("weight: %.1f\n", weight);
 		System.out.printf("gender: %s\n", gender);
-		humanFio.display();
+		fioField.display();
 	}
 }

@@ -1,7 +1,6 @@
 package Prog_lab5;
 
 import java.util.*;
-import java.lang.Math.*;
 
 public class Faculty
 {
@@ -16,7 +15,7 @@ public class Faculty
 	private int quantityOfDisciplines;
 
 
-	//Set methods
+	//Methods
 	public boolean setFacultyName(String bufString)
 	{
 		if (bufString.isEmpty()) {
@@ -137,13 +136,10 @@ public class Faculty
 			return (false);
 		}
 	}
-   
 
-	//Get methods
 	public String getFacultyName()
 	{
-		String outputString = String.copyValueOf(facultyName.toCharArray());
-		return (outputString);
+		return (String.copyValueOf(facultyName.toCharArray()));
 	}
 
 	public int getQuantityOfStudents()
@@ -182,12 +178,12 @@ public class Faculty
 	}	
 
 	//Processing methods
-	public double getProcentOfMasters()
+	public double getPercentOfMasters()
 	{
 		return (((double) quantityOfMasters) / ((double) quantityOfStudents) * 100);
 	}
 
-	public double getProcentOfDoctors()
+	public double getPercentOfDoctors()
 	{
 		return (((double) quantityOfDoctors) / ((double) quantityOfTeachers) * 100);
 	}
@@ -197,131 +193,90 @@ public class Faculty
 		return ((double) quantityOfStudents) / ((double) quantityOfTeachers);
 	}
 
-   public boolean Init(String bufFacultyName, int studentsQuantity, int bachelorsQuantity, int mastersQuantity, int teachersQuantity, int candidatesQuantity, int doctorsQuanity, int discpilinesQuantity)
+   public boolean init(String bufFacultyName, int studentsQuantity, int bachelorsQuantity, int mastersQuantity, int teachersQuantity, int candidatesQuantity, int doctorsQuantity, int disciplinesQuantity)
    {
 		Faculty check = new Faculty();
 	
 		if (check.setFacultyName(bufFacultyName) || check.setQuantityOfStudents(studentsQuantity) ||
 			check.setQuantityOfBachelors(bachelorsQuantity) || check.setQuantityOfMasters(mastersQuantity) ||
 			check.setQuantityOfTeachers(teachersQuantity) || check.setQuantityOfCandidates(candidatesQuantity) ||
-			check.setQuantityOfDoctors(doctorsQuanity) || check.setQuantityOfDisciplines(discpilinesQuantity))
+			check.setQuantityOfDoctors(doctorsQuantity) || check.setQuantityOfDisciplines(disciplinesQuantity))
 			return (true);
 		else
 		{
 			this.setFacultyName(bufFacultyName);
-			this.setQuantityOfStudents(studentsQuantity);
-			this.setQuantityOfBachelors(bachelorsQuantity);
-			this.setQuantityOfMasters(mastersQuantity);
-			this.setQuantityOfTeachers(teachersQuantity);
-			this.setQuantityOfCandidates(candidatesQuantity);
-			this.setQuantityOfDoctors(doctorsQuanity);
-			this.setQuantityOfDisciplines(discpilinesQuantity);
+			this.setStudentsInfo(studentsQuantity, bachelorsQuantity, mastersQuantity);
+			this.setTeachersInfo(teachersQuantity, candidatesQuantity, doctorsQuantity);
+			this.setQuantityOfDisciplines(disciplinesQuantity);
 			return (false);
 		}
    }
 
    public boolean read()
    {
-		Faculty check = new Faculty();
+	   Faculty check = new Faculty();
+	   Scanner scanner = new Scanner(System.in);
 
-		System.out.printf("Enter faculty name:\n");
-		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter faculty name:\n");
 		if (!scanner.hasNextLine())
 			return (true);
-		else
-		{
-			if (check.setFacultyName(scanner.nextLine()))
-				return (true);
-			else 
-			{
-				System.out.printf("Enter quantity of students:\n");
-				if (!scanner.hasNextInt())
-					return (true);
-				else
-				{
-					if (check.setQuantityOfStudents(scanner.nextInt()))
-						return (true);
-					else
-					{
-						System.out.printf("Enter quantity of bachelors:\n");
-						if (!scanner.hasNextInt())
-							return (true);
-						else
-						{
-							if (check.setQuantityOfBachelors(scanner.nextInt()))
-								return (true);
-							else
-							{
-								System.out.printf("Enter quantity of masters:\n");
-								if (!scanner.hasNextInt())
-									return (true);
-								else
-								{
-									if (check.setQuantityOfMasters(scanner.nextInt()))
-										return (true);
-									else
-									{
-										System.out.printf("Enter quantity of teachers:\n");
-										if (!scanner.hasNextInt())
-											return (true);
-										else
-										{
-											if (check.setQuantityOfTeachers(scanner.nextInt()))
-												return (true);
-											else
-											{
-												System.out.printf("Enter quantity of candidates:\n");
-												if (!scanner.hasNextInt())
-													return (true);
-												else
-												{
-													if (check.setQuantityOfCandidates(scanner.nextInt()))
-														return (true);
-													else
-													{
-														System.out.printf("Enter quantity of doctors:\n");
-														if (!scanner.hasNextInt())
-															return (true);
-														else
-														{
-															if (check.setQuantityOfDoctors(scanner.nextInt()))
-																return (true);
-															else
-															{
-																System.out.printf("Enter quantity of disciplines:\n");
-																if (!scanner.hasNextInt())
-																	return (true);
-																else
-																{
-																	if (check.setQuantityOfDisciplines(scanner.nextInt()))
-																		return (true);
-																	else
-																	{
-																		setFacultyName(check.getFacultyName());
-																		setQuantityOfStudents(check.getQuantityOfStudents());
-																		setQuantityOfBachelors(check.getQuantityOfBachelors());
-																		setQuantityOfMasters(check.getQuantityOfMasters());
-																		setQuantityOfTeachers(check.getQuantityOfTeachers());
-																		setQuantityOfCandidates(check.getQuantityOfTeachers());
-																		setQuantityOfDoctors(check.getQuantityOfDoctors());
-																		setQuantityOfDisciplines(check.getQuantityOfDisciplines());
-																		return (false);
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+		if (check.setFacultyName(scanner.nextLine()))
+			return (true);
+
+
+		System.out.print("Enter quantity of students:\n");
+		if (!scanner.hasNextInt())
+			return (true);
+		if (check.setQuantityOfStudents(scanner.nextInt()))
+			return (true);
+
+
+		System.out.print("Enter quantity of bachelors:\n");
+		if (!scanner.hasNextInt())
+			return (true);
+		if (check.setQuantityOfBachelors(scanner.nextInt()))
+			return (true);
+
+
+		System.out.print("Enter quantity of masters:\n");
+		if (!scanner.hasNextInt())
+			return (true);
+		if (check.setQuantityOfMasters(scanner.nextInt()))
+			return (true);
+
+
+		System.out.print("Enter quantity of teachers:\n");
+		if (!scanner.hasNextInt())
+			return (true);
+		if (check.setQuantityOfTeachers(scanner.nextInt()))
+			return (true);
+
+
+		System.out.print("Enter quantity of candidates:\n");
+		if (!scanner.hasNextInt())
+			return (true);
+		if (check.setQuantityOfCandidates(scanner.nextInt()))
+			return (true);
+
+
+		System.out.print("Enter quantity of doctors:\n");
+		if (!scanner.hasNextInt())
+			return (true);
+		if (check.setQuantityOfDoctors(scanner.nextInt()))
+			return (true);
+
+
+		System.out.print("Enter quantity of disciplines:\n");
+		if (!scanner.hasNextInt())
+			return (true);
+		if (check.setQuantityOfDisciplines(scanner.nextInt()))
+			return (true);
+
+
+		this.init(check.getFacultyName(), check.getQuantityOfStudents(), check.getQuantityOfBachelors(),
+				check.getQuantityOfMasters(), check.getQuantityOfTeachers(), check.getQuantityOfTeachers(),
+				check.getQuantityOfDoctors(), check.getQuantityOfDisciplines());
+		return (false);
 	}
 
    public void display()
