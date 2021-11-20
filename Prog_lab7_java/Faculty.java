@@ -193,6 +193,14 @@ public class Faculty
 		return ((double) quantityOfStudents) / ((double) quantityOfTeachers);
 	}
 
+	public Faculty getWithMoreCandidates(Faculty buf)
+	{
+		if (this.getQuantityOfCandidates() >= buf.getQuantityOfCandidates())
+			return (this);
+		else
+			return (buf);
+	}
+
    public boolean init(String bufFacultyName, int studentsQuantity, int bachelorsQuantity, int mastersQuantity, int teachersQuantity, int candidatesQuantity, int doctorsQuantity, int disciplinesQuantity)
    {
 		Faculty check = new Faculty();
