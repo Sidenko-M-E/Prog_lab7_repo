@@ -1,4 +1,4 @@
-package Prog_lab5;
+package Prog_lab7_java;
 
 import java.util.*;
 

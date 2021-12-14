@@ -1,4 +1,4 @@
-package Prog_lab5;
+package Prog_lab7_java;
 
 import java.util.*;
 
@@ -12,7 +12,13 @@ public class Human
 	private char gender;
 	public Fio fioField = new Fio();
 
+
 	//Methods
+	public int getBodyMassIndex()
+	{
+		return (BodyMassIndex.calculate(height, weight));
+	}
+
 	public boolean setId(int buf)
 	{
 		if (buf < 0 || buf > 9999)

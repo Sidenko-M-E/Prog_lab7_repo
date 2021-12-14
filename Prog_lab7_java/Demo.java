@@ -1,4 +1,4 @@
-package Prog_lab5;
+package Prog_lab7_java;
 
 import java.util.Random;
 
@@ -8,6 +8,7 @@ public class Demo{
 		/*
 		System.out.print("--------Fio class--------\n");
 		System.out.print("------init method-------\n");
+		 */
 		Fio myFio = new Fio();
 	
 		if(myFio.init("Sidenko", "Matvey", "Evgenievich"))
@@ -15,6 +16,7 @@ public class Demo{
 		else
 			myFio.display();
 
+		/*
 		System.out.print("\n---read method---\n");
 		if (!myFio.read())
 			myFio.display();
@@ -26,17 +28,21 @@ public class Demo{
 			System.out.print("error\n");
 		else
 			myFio.display();
+		*/
 
 
-
+		/*
 		System.out.print("--------Human class--------\n");
 		System.out.print("------init method-------\n");
+		 */
+
 		Human myHuman = new Human();
 		if(myHuman.init(1984, 45, 193, 90.87, 'M', myFio))
 			System.out.print("error\n");
 		else
 			myHuman.display();
 
+		/*
 		System.out.print("\n------read method------\n");
 		if (myHuman.read())
 			System.out.print("error\n");
@@ -49,9 +55,12 @@ public class Demo{
 			System.out.print("error\n");
 		else
 			myHuman.display();
+		*/
+		System.out.print("\n----BodyMassIndex calculating----\n");
+		System.out.printf("BMI: %d\n", myHuman.getBodyMassIndex());
 
 
-
+/*
 		System.out.print("\n--------Student class--------\n");
 		System.out.print("-------init method-------\n");
 		Student myStudent = new Student();
@@ -96,6 +105,8 @@ public class Demo{
 		else
 			myTeacher.display();
 
+		*/
+
 
 
 		System.out.print("\n--------Faculty class--------\n");
@@ -106,6 +117,7 @@ public class Demo{
 		else
 			myFaculty.display();
 
+		/*
 		System.out.print("\n------Shortcut-set methods-------\n");
 		myFaculty.setStudentsInfo(300, 270, 30);
 		myFaculty.setTeachersInfo(40, 33, 7);
@@ -124,8 +136,8 @@ public class Demo{
 		System.out.printf("Percent of masters on faculty: %.2f\n", myFaculty.getPercentOfMasters());
 		System.out.printf("Percent of doctors on faculty: %.2f\n", myFaculty.getPercentOfDoctors());
 		System.out.printf("Students to teachers quantity: %.2f\n", myFaculty.getStudToTeachRatio());
-*/
 
+		*/
 		System.out.print("\n------array of objects------\n");
 		int sumOfStudents = 0;
 		Random rnd = new Random();
