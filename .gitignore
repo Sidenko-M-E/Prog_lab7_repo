@@ -364,3 +364,6 @@ FodyWeavers.xsd
 /Prog_lab7_cpp/Prog_lab7_cpp.vcxproj.filters
 /Prog_lab7_cpp/Prog_lab7_cpp.vcxproj
 /Prog_lab7_cpp/Prog_lab7_cpp.sln
+/Prog_lab7_csharp/Prog_lab7_csharp.sln
+/Prog_lab7_csharp/Prog_lab7_csharp.csproj
+/Prog_lab7_csharp/App.config
