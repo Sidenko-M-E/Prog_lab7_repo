@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Prog_lab6 
+namespace Prog_lab6
 {
 	public class Teacher
 	{
@@ -9,6 +9,87 @@ namespace Prog_lab6
 		private string degree;
 		private string facultyName;
 		public Human humanField = new Human();
+
+
+		//Properties
+		public int WorkExp
+		{
+			get
+			{
+				return workExp;
+			}
+			set
+			{
+				if ((value >= 0) && (value <= 60))
+					workExp = value;
+			}
+		}
+		public string Degree 
+		{
+			get
+			{
+				string outputString = new string(degree.ToCharArray());
+				return (outputString);
+			}
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+				{
+					string invalidSymbStr = "!@#$%^&*()_+1234567890-=\";:?*,./'][{}<>~`";
+					char[] invalidSymbols = invalidSymbStr.ToCharArray();
+
+					bool checkFlag = false;
+
+					foreach (char symb in invalidSymbols)
+					{
+						if (value.IndexOf(symb) != (-1))
+							checkFlag = true;
+					}
+
+					if (checkFlag)
+						degree = new string(value.ToCharArray());
+				}
+			}
+		}
+		public string FacultyName
+		{
+			get
+			{
+				string outputString = new string(facultyName.ToCharArray());
+				return (outputString);
+			}
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+				{
+					string invalidSymbStr = "!@#$%^&*()_+1234567890-=\";:?*,./'][{}<>~` ";
+					char[] invalidSymbols = invalidSymbStr.ToCharArray();
+
+					bool checkFlag = false;
+
+					foreach (char symb in invalidSymbols)
+					{
+						if (value.IndexOf(symb) != (-1))
+							checkFlag = true;
+					}
+
+					if (checkFlag)
+						facultyName = new string(value.ToCharArray());
+				}
+			}
+		}
+		public Human HumanField 
+		{
+			get
+			{
+				return (humanField);
+			}
+			set
+			{
+				humanField = value;
+			}
+		}
+
 
 		//Methods
 		public bool SetWorkExp(int buf)

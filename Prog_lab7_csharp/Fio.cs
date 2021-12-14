@@ -10,6 +10,90 @@ namespace Prog_lab6
 		private string patronymic;
 
 
+		//Properties
+		public string Surname
+		{
+			get
+			{
+				string outputString = new string(surname.ToCharArray());
+				return (outputString);
+			}
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+				{
+					string invalidSymbStr = "!@#$%^&*()_+1234567890-=\";:?*,./'][{}<>~` ";
+					char[] invalidSymbols = invalidSymbStr.ToCharArray();
+
+					bool checkFlag = false;
+
+					foreach (char symb in invalidSymbols)
+					{
+						if (value.IndexOf(symb) != (-1))
+							checkFlag = true;
+					}
+
+					if (checkFlag)
+						surname = new string(value.ToCharArray());
+				}
+			}
+		}
+		public string Name
+		{
+			get
+			{
+				string outputString = new string(name.ToCharArray());
+				return (outputString);
+			}
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+				{
+					string invalidSymbStr = "!@#$%^&*()_+1234567890-=\";:?*,./'][{}<>~` ";
+					char[] invalidSymbols = invalidSymbStr.ToCharArray();
+
+					bool checkFlag = false;
+
+					foreach (char symb in invalidSymbols)
+					{
+						if (value.IndexOf(symb) != (-1))
+							checkFlag = true;
+					}
+
+					if (checkFlag)
+						name = new string(value.ToCharArray());
+				}
+			}
+		}
+		public string Patronymic
+		{
+			get
+			{
+				string outputString = new string(patronymic.ToCharArray());
+				return (outputString);
+			}
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+				{
+					string invalidSymbStr = "!@#$%^&*()_+1234567890-=\";:?*,./'][{}<>~` ";
+					char[] invalidSymbols = invalidSymbStr.ToCharArray();
+
+					bool checkFlag = false;
+
+					foreach (char symb in invalidSymbols)
+					{
+						if (value.IndexOf(symb) != (-1))
+							checkFlag = true;
+					}
+
+					if (checkFlag)
+						patronymic = new string(value.ToCharArray());
+				}
+			}
+		}
+
+
 		//Methods
 		public bool SetSurname(string bufString)
 		{

@@ -26,6 +26,18 @@ namespace Prog_lab6
 			else
 				myFio.Display();
 
+			Console.Write("\n------set properties demo-------\n");
+			myFio.Surname = "Sidorov";
+			myFio.Name = "Oleg";
+			myFio.Patronymic = "Litvinovich";
+			myFio.Display();
+
+			Console.Write("\n------get properties demo-------\n");
+			Fio demoFio = new Fio();
+			demoFio.Init(myFio.Surname, myFio.Name, myFio.Patronymic);
+			demoFio.Display();
+
+
 
 
 			Console.Write("--------Human class--------\n");
@@ -49,6 +61,19 @@ namespace Prog_lab6
 			else
 				myHuman.Display();
 
+			Console.Write("\n------set properties demo-------\n");
+			myHuman.Id = 2000;
+			myHuman.Age = 40;
+			myHuman.Height = 190;
+			myHuman.Weight = 86.190;
+			myHuman.Gender = 'M';
+			myHuman.FioField = demoFio;
+			myHuman.Display();
+
+			Console.Write("\n------get properties demo-------\n");
+			Human demoHuman = new Human();
+			demoHuman.Init(myHuman.Id, myHuman.Age, myHuman.Height, myHuman.Weight, myHuman.Gender, myHuman.FioField);
+			demoHuman.Display();
 
 
 			Console.Write("\n--------Student class--------\n");
@@ -73,6 +98,18 @@ namespace Prog_lab6
 			else
 				myStudent.Display();
 
+			Console.Write("\n------set properties demo-------\n");
+			myStudent.Course = 1;
+			myStudent.EduProg = "Bachelor";
+			myStudent.Group = "WS-34";
+			myStudent.FacultyName = "FoHS";
+			myStudent.HumanField = demoHuman;
+			myStudent.Display();
+
+			Console.Write("\n------get properties demo-------\n");
+			Student demoStudent = new Student();
+			demoStudent.Init(myStudent.Course, myStudent.EduProg, myStudent.Group, myStudent.FacultyName, myStudent.HumanField);
+			demoStudent.Display();
 
 
 			Console.Write("\n--------Teacher class--------\n");
@@ -95,6 +132,18 @@ namespace Prog_lab6
 			else
 				myTeacher.Display();
 
+			Console.Write("\n------set properties demo-------\n");
+			myStudent.Course = 1;
+			myStudent.EduProg = "Bachelor";
+			myStudent.Group = "WS-34";
+			myStudent.FacultyName = "FoHS";
+			myStudent.HumanField = demoHuman;
+			myStudent.Display();
+
+			Console.Write("\n------get properties demo-------\n");
+			Student demoStudent = new Student();
+			demoStudent.Init(myStudent.Course, myStudent.EduProg, myStudent.Group, myStudent.FacultyName, myStudent.HumanField);
+			demoStudent.Display();
 
 
 			Console.Write("\n--------Faculty class--------\n");
@@ -124,6 +173,29 @@ namespace Prog_lab6
 			Console.Write("Procent of masters on faculty: {0:f2}\n", myFaculty.GetProcentOfMasters());
 			Console.Write("Procent of doctors on faculty: {0:f2}\n", myFaculty.GetProcentOfDoctors());
 			Console.Write("Students to teachers quantity: {0:f2}\n", myFaculty.GetStudToTeachRatio());
+
+
+			Console.Write("\n------array of objects------\n");
+			int sumOfStudents = 0;
+			Random rnd = new Random();
+
+			Faculty[] objArray = new Faculty[3];
+			for (int i = 0; i < objArray.Length; i++)
+			{
+				objArray[i] = new Faculty();
+				objArray[i].Init("smth", rnd.Next(500),
+						rnd.Next(450), rnd.Next(50),
+						rnd.Next(100), rnd.Next(80),
+						rnd.Next(20), rnd.Next(50));
+				sumOfStudents += objArray[i].GetQuantityOfStudents();
+				objArray[i].Display();
+			}
+			Console.Write("\nTotal quantity of students on all faculties: {0}\n", sumOfStudents);
+			Console.Write("\nLet's compare first and second faculties to find the one...\n");
+			Console.Write("...that have the largest number of candidates on it.\n");
+			Console.Write("And the answer is:\n");
+			objArray[0].GetWithMoreCandidates(objArray[1]).Display();
+
 			Console.ReadKey();
 		}
 	}

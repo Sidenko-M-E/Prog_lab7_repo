@@ -11,6 +11,114 @@ namespace Prog_lab6
 		private string facultyName;
 		public Human humanField = new Human();
 
+
+		//Properties
+		public int Course 
+		{
+			get
+			{
+				return course;
+			}
+			set
+			{
+				if ((value >= 0) && (value <= 6))
+					course = value;
+			}
+		}
+		public string EduProg 
+		{
+			get
+			{
+				string outputString = new string(eduProg.ToCharArray());
+				return (outputString);
+			}
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+				{
+					string invalidSymbStr = "!@#$%^&*()_+1234567890-=\";:?*,./'][{}<>~` ";
+					char[] invalidSymbols = invalidSymbStr.ToCharArray();
+
+					bool checkFlag = false;
+
+					foreach (char symb in invalidSymbols)
+					{
+						if (value.IndexOf(symb) != (-1))
+							checkFlag = true;
+					}
+
+					if (checkFlag)
+						eduProg = new string(value.ToCharArray());
+				}
+			}
+		}
+		public string Group 
+		{
+			get
+			{
+				string outputString = new string(group.ToCharArray());
+				return (outputString);
+			}
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+				{
+					string invalidSymbStr = "!@#$%^&*()_+=\";:?*,./'][{}<>~` ";
+					char[] invalidSymbols = invalidSymbStr.ToCharArray();
+
+					bool checkFlag = false;
+
+					foreach (char symb in invalidSymbols)
+					{
+						if (value.IndexOf(symb) != (-1))
+							checkFlag = true;
+					}
+
+					if (checkFlag)
+						group = new string(value.ToCharArray());
+				}
+			}
+		}
+		public string FacultyName 
+		{
+			get
+			{
+				string outputString = new string(facultyName.ToCharArray());
+				return (outputString);
+			}
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+				{
+					string invalidSymbStr = "!@#$%^&*()_+1234567890-=\";:?*,./'][{}<>~` ";
+					char[] invalidSymbols = invalidSymbStr.ToCharArray();
+
+					bool checkFlag = false;
+
+					foreach (char symb in invalidSymbols)
+					{
+						if (value.IndexOf(symb) != (-1))
+							checkFlag = true;
+					}
+
+					if (checkFlag)
+						facultyName = new string(value.ToCharArray());
+				}
+			}
+		}
+		public Human HumanField 
+		{
+			get
+			{
+				return (humanField);
+			}
+			set
+			{
+				humanField = value;
+			}
+		}
+
+
 		//Methods
 		public bool SetCourse(int buf)
 		{

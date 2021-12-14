@@ -15,6 +15,120 @@ namespace Prog_lab6
 		private int quantityOfDisciplines;
 
 
+		//Properties
+		public string FacultyName 
+		{
+			get
+			{
+				string outputString = new string(facultyName.ToCharArray());
+				return (outputString);
+			}
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+				{
+					string invalidSymbStr = "!@#$%^&*()_+1234567890-=\";:?*,./'][{}<>~` ";
+					char[] invalidSymbols = invalidSymbStr.ToCharArray();
+
+					bool checkFlag = false;
+
+					foreach (char symb in invalidSymbols)
+					{
+						if (value.IndexOf(symb) != (-1))
+							checkFlag = true;
+					}
+
+					if (checkFlag)
+						facultyName = new string(value.ToCharArray());
+				}
+			}
+		}
+		public int QuantityOfStudents
+		{
+			get
+			{
+				return quantityOfStudents;
+			}
+			set
+			{
+				if ((value >= 0) && (value <= 1000))
+					quantityOfStudents = value;
+			}
+		}
+		public int QuantityOfBachelors
+		{
+			get
+			{
+				return quantityOfBachelors;
+			}
+			set
+			{
+				if ((value >= 0) && (value <= 1000))
+					quantityOfBachelors = value;
+			}
+		}
+		public int QuantityOfMasters
+		{
+			get
+			{
+				return quantityOfMasters;
+			}
+			set
+			{
+				if ((value >= 0) && (value <= 1000))
+					quantityOfMasters = value;
+			}
+		}
+		public int QuantityOfTeachers
+		{
+			get
+			{
+				return quantityOfTeachers;
+			}
+			set
+			{
+				if ((value >= 0) && (value <= 100))
+					quantityOfTeachers = value;
+			}
+		}
+		public int QuantityOfCandidates
+		{
+			get
+			{
+				return quantityOfCandidates;
+			}
+			set
+			{
+				if ((value >= 0) && (value <= 100))
+					quantityOfCandidates = value;
+			}
+		}
+		public int QuantityOfDoctors
+		{
+			get
+			{
+				return quantityOfDoctors;
+			}
+			set
+			{
+				if ((value >= 0) && (value <= 100))
+					quantityOfDoctors = value;
+			}
+		}
+		public int QuantityOfDisciplines
+		{
+			get
+			{
+				return quantityOfDisciplines;
+			}
+			set
+			{
+				if ((value >= 0) && (value <= 100))
+					quantityOfDisciplines = value;
+			}
+		}
+
+
 		//Methods
 		public bool SetFacultyName(string bufString)
 		{
@@ -173,6 +287,13 @@ namespace Prog_lab6
 
 		public double GetStudToTeachRatio()
 		{return ((double)quantityOfStudents) / ((double)quantityOfTeachers);}
+		public Faculty GetWithMoreCandidates(Faculty buf)
+		{
+			if (this.GetQuantityOfCandidates() >= buf.GetQuantityOfCandidates())
+				return (this);
+			else
+				return (buf);
+		}
 
 		public bool Init(string bufFacultyName, int studentsQuantity, int bachelorsQuantity, int mastersQuantity, int teachersQuantity, int candidatesQuantity, int doctorsQuanity, int discpilinesQuantity)
 		{

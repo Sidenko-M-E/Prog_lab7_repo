@@ -13,6 +13,82 @@ namespace Prog_lab6
 		private char gender;
 		public Fio fioField = new Fio();
 
+
+		//Properties
+		public int Id
+		{
+			get
+			{
+				return id;
+			}
+			set
+			{
+				if ((value >= 0) && (value <= 9999))
+					id = value;
+			}
+		}
+		public int Age 
+		{
+			get
+			{
+				return age;
+			}
+			set
+			{
+				if ((value >= 0) && (value <= 200))
+					age = value;
+			}
+		}
+		public int Height
+		{
+			get
+			{
+				return height;
+			}
+			set
+			{
+				if ((value >= 40) && (value <= 300))
+					height = value;
+			}
+		}
+		public double Weight
+		{
+			get
+			{
+				return weight;
+			}
+			set
+			{
+				value = Math.Round(value, 1, MidpointRounding.AwayFromZero);
+				if ((value >= 0) && (value <= 650))
+					weight = value;
+			}
+		}
+		public char Gender
+        {
+			get
+			{
+				return gender;
+			}
+			set
+			{
+				if (value == 'M' || value == 'F')
+					gender = value;
+			}
+		}
+		public Fio FioField 
+		{
+			get
+			{
+				return (fioField);
+			}
+			set
+			{
+				fioField = value;
+			}
+		} 
+
+
 		//Methods
 		public bool SetId(int buf)
 		{
