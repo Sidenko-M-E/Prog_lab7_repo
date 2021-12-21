@@ -47,7 +47,7 @@ namespace Prog_lab6
 							checkFlag = true;
 					}
 
-					if (checkFlag)
+					if (!checkFlag)
 						eduProg = new string(value.ToCharArray());
 				}
 			}
@@ -74,7 +74,7 @@ namespace Prog_lab6
 							checkFlag = true;
 					}
 
-					if (checkFlag)
+					if (!checkFlag)
 						group = new string(value.ToCharArray());
 				}
 			}
@@ -101,7 +101,7 @@ namespace Prog_lab6
 							checkFlag = true;
 					}
 
-					if (checkFlag)
+					if (!checkFlag)
 						facultyName = new string(value.ToCharArray());
 				}
 			}

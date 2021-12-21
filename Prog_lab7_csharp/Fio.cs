@@ -33,7 +33,7 @@ namespace Prog_lab6
 							checkFlag = true;
 					}
 
-					if (checkFlag)
+					if (!checkFlag)
 						surname = new string(value.ToCharArray());
 				}
 			}
@@ -60,7 +60,7 @@ namespace Prog_lab6
 							checkFlag = true;
 					}
 
-					if (checkFlag)
+					if (!checkFlag)
 						name = new string(value.ToCharArray());
 				}
 			}
@@ -87,7 +87,7 @@ namespace Prog_lab6
 							checkFlag = true;
 					}
 
-					if (checkFlag)
+					if (!checkFlag)
 						patronymic = new string(value.ToCharArray());
 				}
 			}

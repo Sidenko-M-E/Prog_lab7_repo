@@ -38,7 +38,7 @@ namespace Prog_lab6
 							checkFlag = true;
 					}
 
-					if (checkFlag)
+					if (!checkFlag)
 						facultyName = new string(value.ToCharArray());
 				}
 			}

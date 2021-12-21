@@ -7,8 +7,9 @@ namespace Prog_lab6
 		static void Main(string[] args)
 		{
 			Console.Write("--------Fio class--------\n");
-			Console.Write("------Init method-------\n");
+			//Console.Write("------Init method-------\n");
 			Fio myFio = new Fio();
+			/*
 			if (myFio.Init("Sidenko", "Matvey", "Evgenievich"))
 				Console.Write("error\n");
 			else
@@ -19,30 +20,29 @@ namespace Prog_lab6
 				myFio.Display();
 			else
 				Console.Write("error\n");
-
 			Console.Write("\n------Set methods-------\n");
 			if ((myFio.SetSurname("Ivanov")) || (myFio.SetName("Ivan")) || (myFio.SetPatronymic("Ivanovich")))
 				Console.Write("error\n");
 			else
 				myFio.Display();
-
-			Console.Write("\n------set properties demo-------\n");
+			*/
+			Console.Write("------set-properties demo-------\n");
 			myFio.Surname = "Sidorov";
 			myFio.Name = "Oleg";
 			myFio.Patronymic = "Litvinovich";
 			myFio.Display();
 
-			Console.Write("\n------get properties demo-------\n");
+			Console.Write("------get-properties demo-------\n");
 			Fio demoFio = new Fio();
 			demoFio.Init(myFio.Surname, myFio.Name, myFio.Patronymic);
 			demoFio.Display();
 
 
 
-
-			Console.Write("--------Human class--------\n");
-			Console.Write("------init method-------\n");
+			Console.Write("\n--------Human class--------\n");
+			//Console.Write("------init method-------\n");
 			Human myHuman = new Human();
+			/*
 			if (myHuman.Init(1984, 45, 193, 90.87, 'M', myFio))
 				Console.Write("error\n");
 			else
@@ -60,8 +60,8 @@ namespace Prog_lab6
 				Console.Write("error\n");
 			else
 				myHuman.Display();
-
-			Console.Write("\n------set properties demo-------\n");
+			*/
+			Console.Write("------set-properties demo-------\n");
 			myHuman.Id = 2000;
 			myHuman.Age = 40;
 			myHuman.Height = 190;
@@ -70,15 +70,17 @@ namespace Prog_lab6
 			myHuman.FioField = demoFio;
 			myHuman.Display();
 
-			Console.Write("\n------get properties demo-------\n");
+			Console.Write("------get-properties demo-------\n");
 			Human demoHuman = new Human();
 			demoHuman.Init(myHuman.Id, myHuman.Age, myHuman.Height, myHuman.Weight, myHuman.Gender, myHuman.FioField);
 			demoHuman.Display();
 
 
+
 			Console.Write("\n--------Student class--------\n");
-			Console.Write("-------init method-------\n");
+			//Console.Write("-------init method-------\n");
 			Student myStudent = new Student();
+			/*
 			if (myStudent.Init(2, "Bachelor", "PI-03", "FoIT", myHuman))
 				Console.Write("error\n");
 			else
@@ -97,8 +99,8 @@ namespace Prog_lab6
 				Console.Write("error\n");
 			else
 				myStudent.Display();
-
-			Console.Write("\n------set properties demo-------\n");
+			*/
+			Console.Write("------set-properties demo-------\n");
 			myStudent.Course = 1;
 			myStudent.EduProg = "Bachelor";
 			myStudent.Group = "WS-34";
@@ -106,15 +108,17 @@ namespace Prog_lab6
 			myStudent.HumanField = demoHuman;
 			myStudent.Display();
 
-			Console.Write("\n------get properties demo-------\n");
+			Console.Write("------get-properties demo-------\n");
 			Student demoStudent = new Student();
 			demoStudent.Init(myStudent.Course, myStudent.EduProg, myStudent.Group, myStudent.FacultyName, myStudent.HumanField);
 			demoStudent.Display();
 
 
+
 			Console.Write("\n--------Teacher class--------\n");
-			Console.Write("-------init method-------\n");
+			//Console.Write("-------init method-------\n");
 			Teacher myTeacher = new Teacher();
+			/*
 			if (myTeacher.Init(40, "Candidate of Mathematical Sciences", "FoIT", myHuman))
 				Console.Write("error\n");
 			else
@@ -131,24 +135,25 @@ namespace Prog_lab6
 				Console.Write("error\n");
 			else
 				myTeacher.Display();
+			*/
+			Console.Write("------set-properties demo-------\n");
+			myTeacher.WorkExp = 20;
+			myTeacher.Degree = "Candidate of Historical Sciences";
+			myTeacher.FacultyName = "FoHS";
+			myTeacher.HumanField = demoHuman;
+			myTeacher.Display();
 
-			Console.Write("\n------set properties demo-------\n");
-			myStudent.Course = 1;
-			myStudent.EduProg = "Bachelor";
-			myStudent.Group = "WS-34";
-			myStudent.FacultyName = "FoHS";
-			myStudent.HumanField = demoHuman;
-			myStudent.Display();
+			Console.Write("------get-properties demo-------\n");
+			Teacher demoTeacher = new Teacher();
+			demoTeacher.Init(myTeacher.WorkExp, myTeacher.Degree, myTeacher.FacultyName, myTeacher.HumanField);
+			demoTeacher.Display();
 
-			Console.Write("\n------get properties demo-------\n");
-			Student demoStudent = new Student();
-			demoStudent.Init(myStudent.Course, myStudent.EduProg, myStudent.Group, myStudent.FacultyName, myStudent.HumanField);
-			demoStudent.Display();
 
 
 			Console.Write("\n--------Faculty class--------\n");
-			Console.Write("-------Init method-------\n");
+			//Console.Write("-------Init method-------\n");
 			Faculty myFaculty = new Faculty();
+			/*
 			if (myFaculty.Init("FoIT", 180, 145, 35, 40, 20, 5, 70))
 				Console.Write("error\n");
 			else
@@ -168,13 +173,30 @@ namespace Prog_lab6
 			else
 				myFaculty.Display();
 
-
 			Console.Write("\n----processing by methods----\n");
 			Console.Write("Procent of masters on faculty: {0:f2}\n", myFaculty.GetProcentOfMasters());
 			Console.Write("Procent of doctors on faculty: {0:f2}\n", myFaculty.GetProcentOfDoctors());
 			Console.Write("Students to teachers quantity: {0:f2}\n", myFaculty.GetStudToTeachRatio());
+			*/
+			Console.Write("------set-properties demo-------\n");
+			myFaculty.FacultyName = "FoHS";
+			myFaculty.QuantityOfStudents = 300;
+			myFaculty.QuantityOfBachelors = 200;
+			myFaculty.QuantityOfMasters = 100;
+			myFaculty.QuantityOfTeachers = 50;
+			myFaculty.QuantityOfCandidates = 35;
+			myFaculty.QuantityOfDoctors = 15;
+			myFaculty.QuantityOfDisciplines = 40;
+			myFaculty.Display();
 
+			Console.Write("------get-properties demo-------\n");
+			Faculty demoFaculty = new Faculty();
+			demoFaculty.Init(myFaculty.FacultyName, myFaculty.QuantityOfStudents, 
+				myFaculty.QuantityOfBachelors, myFaculty.QuantityOfMasters, myFaculty.QuantityOfTeachers, 
+				myFaculty.QuantityOfCandidates, myFaculty.QuantityOfDoctors, myFaculty.QuantityOfDisciplines);
+			myFaculty.Display();
 
+			/*
 			Console.Write("\n------array of objects------\n");
 			int sumOfStudents = 0;
 			Random rnd = new Random();
@@ -195,7 +217,7 @@ namespace Prog_lab6
 			Console.Write("...that have the largest number of candidates on it.\n");
 			Console.Write("And the answer is:\n");
 			objArray[0].GetWithMoreCandidates(objArray[1]).Display();
-
+			*/
 			Console.ReadKey();
 		}
 	}
