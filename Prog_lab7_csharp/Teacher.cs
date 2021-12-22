@@ -152,6 +152,32 @@ namespace Prog_lab6
 			return (outputString);
 		}
 
+		public static Teacher operator +(Teacher operatorTeacher, int operatorWorkExp)
+		{
+			return (new Teacher
+			{
+				WorkExp = operatorTeacher.WorkExp + operatorWorkExp,
+				Degree = operatorTeacher.Degree,
+				FacultyName = operatorTeacher.FacultyName,
+				HumanField = operatorTeacher.HumanField
+			});
+		}
+
+		public static int operator +(int operatorWorkExp, Teacher operatorTeacher)
+		{
+			return (operatorTeacher.workExp + operatorWorkExp);
+		}
+
+		public static Teacher operator ++(Teacher operatorTeacher)
+		{
+			return (new Teacher {
+				WorkExp = operatorTeacher.WorkExp + 1, 
+				Degree = operatorTeacher.Degree, 
+				FacultyName = operatorTeacher.FacultyName, 
+				HumanField = operatorTeacher.HumanField
+			});
+		}
+
 		public bool Init(int bufWorkExp, string bufDegree, string bufFacultyName, Human bufHuman)
 		{
 			Teacher check = new Teacher();

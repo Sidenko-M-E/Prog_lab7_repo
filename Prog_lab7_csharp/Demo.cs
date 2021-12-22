@@ -148,6 +148,22 @@ namespace Prog_lab6
 			demoTeacher.Init(myTeacher.WorkExp, myTeacher.Degree, myTeacher.FacultyName, myTeacher.HumanField);
 			demoTeacher.Display();
 
+			Console.Write("\n----operator overloading demo----\n");
+			Console.Write("demoTeacher.WorkExp = {0}\n",demoTeacher.WorkExp);
+			
+			demoTeacher = demoTeacher + 3;
+			Console.Write("\ndemoTeacher + 3 = new object of Teacher class:\n", demoTeacher);
+			demoTeacher.Display();
+
+			Console.Write("\n4 + demoTeacher  = {0} of int\n", 4 + demoTeacher);
+
+			Console.Write("\ndemoTeacher++ = new object of Teacher class\n");
+			demoTeacher++;
+			demoTeacher.Display();
+
+			Console.Write("\n++demoTeacher = new object of Teacher class\n");
+			++demoTeacher;
+			demoTeacher.Display();
 
 
 			Console.Write("\n--------Faculty class--------\n");
@@ -226,7 +242,6 @@ namespace Prog_lab6
 			int demoResult = 4;
 			myFaculty.IsHavingMoreTeachersThen(ref demoResult);
 			Console.Write("Ref-expression working result = {0}\n", demoResult);
-
 
 
 			Console.ReadKey();
