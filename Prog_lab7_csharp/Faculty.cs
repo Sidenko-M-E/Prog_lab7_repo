@@ -2,7 +2,7 @@
 
 namespace Prog_lab6 
 {
-	public class Faculty 
+	public struct Faculty 
 	{
 		//Attributes
 		private string facultyName;

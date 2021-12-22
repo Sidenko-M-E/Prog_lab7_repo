@@ -2,7 +2,7 @@
 
 namespace Prog_lab6
 {
-	public class Fio
+	public struct Fio
 	{
 		//Attributes
 		private string surname;

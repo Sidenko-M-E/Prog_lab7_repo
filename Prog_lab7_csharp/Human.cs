@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Prog_lab6
 {
-    public class Human
+    public struct Human
     {
 		//Attributes
 		private int id;
@@ -11,7 +11,7 @@ namespace Prog_lab6
 		private int height;
 		private double weight;
 		private char gender;
-		public Fio fioField = new Fio();
+		public Fio fioField;
 
 
 		//Properties

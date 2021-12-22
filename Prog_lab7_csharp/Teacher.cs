@@ -2,13 +2,13 @@
 
 namespace Prog_lab6
 {
-	public class Teacher
+	public struct Teacher
 	{
 		//Attributes
 		private int workExp;
 		private string degree;
 		private string facultyName;
-		public Human humanField = new Human();
+		public Human humanField;
 
 
 		//Properties

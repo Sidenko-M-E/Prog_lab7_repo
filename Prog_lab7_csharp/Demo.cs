@@ -8,7 +8,7 @@ namespace Prog_lab6
 		{
 			Console.Write("--------Fio class--------\n");
 			//Console.Write("------Init method-------\n");
-			Fio myFio = new Fio();
+			//Fio myFio = new Fio();
 			/*
 			if (myFio.Init("Sidenko", "Matvey", "Evgenievich"))
 				Console.Write("error\n");
@@ -26,6 +26,7 @@ namespace Prog_lab6
 			else
 				myFio.Display();
 			*/
+			/*
 			Console.Write("------set-properties demo-------\n");
 			myFio.Surname = "Sidorov";
 			myFio.Name = "Oleg";
@@ -36,12 +37,39 @@ namespace Prog_lab6
 			Fio demoFio = new Fio();
 			demoFio.Init(myFio.Surname, myFio.Name, myFio.Patronymic);
 			demoFio.Display();
+			*/
+
+			Console.Write("\n---class and struct difference---\n");
+			Fio myFio = new Fio();
+			myFio.Surname = "Komolov";
+			myFio.Name = "Oleg";
+			myFio.Patronymic = "Victorovich";
+			Console.Write("\nmyFio struct:\n");
+			myFio.Display();
+
+			Fio demoFio = new Fio();
+			demoFio.Surname = "Anosov";
+			demoFio.Name = "Aleksandr";
+			demoFio.Patronymic = "Ivanovich";
+			Console.Write("\ndemoFio struct:\n");
+			demoFio.Display();
+
+			Console.Write("\nResult of demoFio = myFio is\n");
+			demoFio = myFio;
+			demoFio.Display();
+
+			myFio.Init("Stepanov", "Maksim", "Olegovich");
+			Console.Write("\nmyFio struct after change:\n");
+			myFio.Display();
+
+			Console.Write("\nFinal value of demoFio:\n");
+			demoFio.Display();
 
 
 
-			Console.Write("\n--------Human class--------\n");
+			//Console.Write("\n--------Human class--------\n");
 			//Console.Write("------init method-------\n");
-			Human myHuman = new Human();
+			//Human myHuman = new Human();
 			/*
 			if (myHuman.Init(1984, 45, 193, 90.87, 'M', myFio))
 				Console.Write("error\n");
@@ -61,6 +89,7 @@ namespace Prog_lab6
 			else
 				myHuman.Display();
 			*/
+			/*
 			Console.Write("------set-properties demo-------\n");
 			myHuman.Id = 2000;
 			myHuman.Age = 40;
@@ -74,12 +103,13 @@ namespace Prog_lab6
 			Human demoHuman = new Human();
 			demoHuman.Init(myHuman.Id, myHuman.Age, myHuman.Height, myHuman.Weight, myHuman.Gender, myHuman.FioField);
 			demoHuman.Display();
+			*/
 
 
 
-			Console.Write("\n--------Student class--------\n");
+			//Console.Write("\n--------Student class--------\n");
 			//Console.Write("-------init method-------\n");
-			Student myStudent = new Student();
+			//Student myStudent = new Student();
 			/*
 			if (myStudent.Init(2, "Bachelor", "PI-03", "FoIT", myHuman))
 				Console.Write("error\n");
@@ -100,6 +130,7 @@ namespace Prog_lab6
 			else
 				myStudent.Display();
 			*/
+			/*
 			Console.Write("------set-properties demo-------\n");
 			myStudent.Course = 1;
 			myStudent.EduProg = "Bachelor";
@@ -112,12 +143,12 @@ namespace Prog_lab6
 			Student demoStudent = new Student();
 			demoStudent.Init(myStudent.Course, myStudent.EduProg, myStudent.Group, myStudent.FacultyName, myStudent.HumanField);
 			demoStudent.Display();
+			*/
 
 
-
-			Console.Write("\n--------Teacher class--------\n");
+			//Console.Write("\n--------Teacher class--------\n");
 			//Console.Write("-------init method-------\n");
-			Teacher myTeacher = new Teacher();
+			//Teacher myTeacher = new Teacher();
 			/*
 			if (myTeacher.Init(40, "Candidate of Mathematical Sciences", "FoIT", myHuman))
 				Console.Write("error\n");
@@ -136,6 +167,7 @@ namespace Prog_lab6
 			else
 				myTeacher.Display();
 			*/
+			/*
 			Console.Write("------set-properties demo-------\n");
 			myTeacher.WorkExp = 20;
 			myTeacher.Degree = "Candidate of Historical Sciences";
@@ -164,11 +196,11 @@ namespace Prog_lab6
 			Console.Write("\n++demoTeacher = new object of Teacher class\n");
 			++demoTeacher;
 			demoTeacher.Display();
+			*/
 
-
-			Console.Write("\n--------Faculty class--------\n");
+			//Console.Write("\n--------Faculty class--------\n");
 			//Console.Write("-------Init method-------\n");
-			Faculty myFaculty = new Faculty();
+			//Faculty myFaculty = new Faculty();
 			/*
 			if (myFaculty.Init("FoIT", 180, 145, 35, 40, 20, 5, 70))
 				Console.Write("error\n");
@@ -194,6 +226,7 @@ namespace Prog_lab6
 			Console.Write("Procent of doctors on faculty: {0:f2}\n", myFaculty.GetProcentOfDoctors());
 			Console.Write("Students to teachers quantity: {0:f2}\n", myFaculty.GetStudToTeachRatio());
 			*/
+			/*
 			Console.Write("------set-properties demo-------\n");
 			myFaculty.FacultyName = "FoHS";
 			myFaculty.QuantityOfStudents = 300;
@@ -211,7 +244,7 @@ namespace Prog_lab6
 				myFaculty.QuantityOfBachelors, myFaculty.QuantityOfMasters, myFaculty.QuantityOfTeachers, 
 				myFaculty.QuantityOfCandidates, myFaculty.QuantityOfDoctors, myFaculty.QuantityOfDisciplines);
 			myFaculty.Display();
-
+			*/
 			/*
 			Console.Write("\n------array of objects------\n");
 			int sumOfStudents = 0;
@@ -234,7 +267,7 @@ namespace Prog_lab6
 			Console.Write("And the answer is:\n");
 			objArray[0].GetWithMoreCandidates(objArray[1]).Display();
 			*/
-
+			/*
 			Console.Write("\n-------ref-out-expressions-----\n");
 			myFaculty.IsHavingMoreStudentsThen(out int myResult);
 			Console.Write("Out-expression working result = {0}\n", myResult);
@@ -242,7 +275,7 @@ namespace Prog_lab6
 			int demoResult = 4;
 			myFaculty.IsHavingMoreTeachersThen(ref demoResult);
 			Console.Write("Ref-expression working result = {0}\n", demoResult);
-
+			*/
 
 			Console.ReadKey();
 		}
