@@ -218,6 +218,17 @@ namespace Prog_lab6
 			Console.Write("And the answer is:\n");
 			objArray[0].GetWithMoreCandidates(objArray[1]).Display();
 			*/
+
+			Console.Write("\n-------ref-out-expressions-----\n");
+			myFaculty.IsHavingMoreStudentsThen(out int myResult);
+			Console.Write("Out-expression working result = {0}\n", myResult);
+
+			int demoResult = 4;
+			myFaculty.IsHavingMoreTeachersThen(ref demoResult);
+			Console.Write("Ref-expression working result = {0}\n", demoResult);
+
+
+
 			Console.ReadKey();
 		}
 	}

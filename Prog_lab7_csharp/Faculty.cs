@@ -287,6 +287,7 @@ namespace Prog_lab6
 
 		public double GetStudToTeachRatio()
 		{return ((double)quantityOfStudents) / ((double)quantityOfTeachers);}
+		
 		public Faculty GetWithMoreCandidates(Faculty buf)
 		{
 			if (this.GetQuantityOfCandidates() >= buf.GetQuantityOfCandidates())
@@ -294,6 +295,24 @@ namespace Prog_lab6
 			else
 				return (buf);
 		}
+
+		public void IsHavingMoreStudentsThen(out int comparisonValueAndResult)
+		{
+			comparisonValueAndResult = 15;
+			if (this.GetQuantityOfTeachers() > comparisonValueAndResult)
+				comparisonValueAndResult = 1;
+			else
+				comparisonValueAndResult = 0;
+		}
+
+		public void IsHavingMoreTeachersThen(ref int comparisonValueAndResult)
+		{
+			if (this.GetQuantityOfTeachers() > comparisonValueAndResult)
+				comparisonValueAndResult = 1;
+			else
+				comparisonValueAndResult = 0;
+		}
+
 
 		public bool Init(string bufFacultyName, int studentsQuantity, int bachelorsQuantity, int mastersQuantity, int teachersQuantity, int candidatesQuantity, int doctorsQuanity, int discpilinesQuantity)
 		{
