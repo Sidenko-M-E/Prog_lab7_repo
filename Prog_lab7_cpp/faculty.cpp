@@ -1,391 +1,271 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <string.h>
-#include <malloc.h>
-#include "faculty.h"
+#include "Faculty.h"
+#include <iostream>
 
-//Метод установки названия факультета
-bool faculty::SetFacultyName(char buf_string[])
+
+bool Faculty::SetFacultyName(string bufString)
 {
-	//обрезка входной строки
-	if (strlen(buf_string) > 30)
-		buf_string[30 - 1] = '\0';
-
-	//проверка на ввод пустой строки
-	if (strlen(buf_string) == 0)
+	if (bufString.empty())
 		return (true);
 
-	//определение массива недопустимых символов
-	char invalid_symbols[] = "!@#$%^&*()_+1234567890-=\"№;:?*,./'][{}<>~` ";
-	int invalid_symbols_lenght = 43;
+	char invalidSymbols[] = "!@#$%^&*()_+1234567890-=\"№;:?*,./'][{}<>~` ";
+	for (char symb : invalidSymbols)
+	{
+		if (bufString.find(symb) != (-1))
+			return (true);
+	}
 
-	//посимвольное сравнение входной строки и массива недопустимых символов
-	int buf_len = strlen(buf_string);
-	for (int i = 0; i < buf_len; i++)
-		for (int j = 0; j < invalid_symbols_lenght; j++)
-			if (buf_string[i] == invalid_symbols[j])
-				return(true);
-
-	//копирование входной строки в поле объекта,
-	//при успешном прохождении проверки
-	strcpy(FacultyName, buf_string);
+	facultyName = bufString;
 	return (false);
 }
 
-//Метод установки кол-ва студентов
-bool faculty::SetQuantityOfStudents(int buf)
+bool Faculty::SetQuantityOfStudents(int buf)
 {
 	if (buf < 0 || buf > 1000)
 		return (true);
 	else
 	{
-		QuantityOfStudents = buf;
+		quantityOfStudents = buf;
 		return (false);
 	}
 }
 
-//Метод установки кол-ва бакалавров
-bool faculty::SetQuantityOfBachelors(int buf)
+bool Faculty::SetQuantityOfBachelors(int buf)
 {
 	if (buf < 0 || buf > 1000)
 		return (true);
 	else
 	{
-		QuantityOfBachelors = buf;
+		quantityOfBachelors = buf;
 		return (false);
 	}
 }
 
-//Метод установки кол-ва магистров
-bool faculty::SetQuantityOfMasters(int buf)
+bool Faculty::SetQuantityOfMasters(int buf)
 {
 	if (buf < 0 || buf > 1000)
 		return (true);
 	else
 	{
-		QuantityOfMasters = buf;
+		quantityOfMasters = buf;
 		return (false);
 	}
 }
 
-//Метод установки кол-ва учителей
-bool faculty::SetQuantityOfTeachers(int buf)
+bool Faculty::SetQuantityOfTeachers(int buf)
 {
 	if (buf < 0 || buf > 100)
 		return (true);
 	else
 	{
-		QuantityOfTeachers = buf;
+		quantityOfTeachers = buf;
 		return (false);
 	}
 }
 
-//Метод установки кол-ва кандидатов наук
-bool faculty::SetQuantityOfCandidates(int buf)
+bool Faculty::SetQuantityOfCandidates(int buf)
 {
 	if (buf < 0 || buf > 100)
 		return (true);
 	else
 	{
-		QuantityOfCandidates = buf;
+		quantityOfCandidates = buf;
 		return (false);
 	}
 }
 
-//Метод установки кол-ва докторов наук
-bool faculty::SetQuantityOfDoctors(int buf)
+bool Faculty::SetQuantityOfDoctors(int buf)
 {
 	if (buf < 0 || buf > 100)
 		return (true);
 	else
 	{
-		QuantityOfDoctors = buf;
+		quantityOfDoctors = buf;
 		return (false);
 	}
 }
 
-//Метод установки кол-ва дисциплин
-bool faculty::SetQuantityOfDisciplines(int buf)
+bool Faculty::SetQuantityOfDisciplines(int buf)
 {
 	if (buf < 0 || buf > 100)
 		return (true);
 	else
 	{
-		QuantityOfDisciplines = buf;
+		quantityOfDisciplines = buf;
 		return (false);
 	}
 }
 
-//Метод установки информации о студентах
-bool faculty::SetStudentsInfo(int all_quan, int bach_quan, int mast_quan)
+bool Faculty::SetStudentsInfo(int allQuantity, int bachelorsQuantity, int mastersQuantity)
 {
-	if (all_quan < 0 || all_quan > 1000 || bach_quan < 0 || bach_quan > 1000 || mast_quan < 0 || mast_quan > 1000)
+	if (allQuantity < 0 || allQuantity > 1000 || bachelorsQuantity < 0 || bachelorsQuantity > 1000 || mastersQuantity < 0 || mastersQuantity > 1000)
 		return (true);
 	else
 	{
-		QuantityOfStudents = all_quan;
-		QuantityOfBachelors = bach_quan;
-		QuantityOfMasters = mast_quan;
+		quantityOfStudents = allQuantity;
+		quantityOfBachelors = bachelorsQuantity;
+		quantityOfMasters = mastersQuantity;
 		return (false);
 	}
 }
 
-//Метод установки информации о преподавателях
-bool faculty::SetTeachersInfo(int all_quan, int cand_quan, int doct_quan)
+bool Faculty::SetTeachersInfo(int allQuantity, int candidatesQuantity, int doctorsQuantity)
 {
-	if (all_quan < 0 || all_quan > 100 || cand_quan < 0 || cand_quan > 100 || doct_quan < 0 || doct_quan > 100)
+	if (allQuantity < 0 || allQuantity > 100 || candidatesQuantity < 0 || candidatesQuantity > 100 || doctorsQuantity < 0 || doctorsQuantity > 100)
 		return (true);
 	else
 	{
-		QuantityOfTeachers = all_quan;
-		QuantityOfCandidates = cand_quan;
-		QuantityOfDoctors = doct_quan;
+		quantityOfTeachers = allQuantity;
+		quantityOfCandidates = candidatesQuantity;
+		quantityOfDoctors = doctorsQuantity;
 		return (false);
 	}
 }
 
-//Метод извлечения навзания факультета
-char* faculty::GetFacultyName()
+
+
+string Faculty::GetFacultyName()
 {
-	char* buf_string = (char*)calloc(30, sizeof(char));
-	strcpy(buf_string, FacultyName);
-	return (buf_string);
+	return (facultyName);
 }
 
-//Метод извлечения кол-ва студентов
-int faculty::GetQuantityOfStudents()
+int Faculty::GetQuantityOfStudents()
 {
-	int buf = QuantityOfStudents;
-	return (buf);
+	return (quantityOfStudents);
 }
 
-//Метод извлечения кол-ва бакалавров
-int faculty::GetQuantityOfBachelors()
+int Faculty::GetQuantityOfBachelors()
 {
-	int buf = QuantityOfBachelors;
-	return (buf);
+	return (quantityOfBachelors);
 }
 
-//Метод извлечения кол-ва магистров
-int faculty::GetQuantityOfMasters()
+int Faculty::GetQuantityOfMasters()
 {
-	int buf = QuantityOfMasters;
-	return (buf);
+	return (quantityOfMasters);
 }
 
-//Метод извлечения кол-ва учителей
-int faculty::GetQuantityOfTeachers()
+int Faculty::GetQuantityOfTeachers()
 {
-	int buf = QuantityOfTeachers;
-	return (buf);
+	return (quantityOfTeachers);
 }
 
-//Метод извлечения кол-ва кандидатов наук
-int faculty::GetQuantityOfCandidates()
+int Faculty::GetQuantityOfCandidates()
 {
-	int buf = QuantityOfCandidates;
-	return (buf);
+	return (quantityOfCandidates);
 }
 
-//Метод извлечения кол-ва докторов наук
-int faculty::GetQuantityOfDoctors()
+int Faculty::GetQuantityOfDoctors()
 {
-	int buf = QuantityOfDoctors;
-	return (buf);
+	return (quantityOfDoctors);
 }
 
-//Метод извлечения кол-ва дисциплин
-int faculty::GetQuantityOfDisciplines()
+int Faculty::GetQuantityOfDisciplines()
 {
-	int buf = QuantityOfDisciplines;
-	return (buf);
+	return (quantityOfDisciplines);
 }
 
-//Метод подсчёта процентного кол-ва магистров среди учащихся !!!!!
-double faculty::ProcentOfMasters()
+double Faculty::GetProcentOfMasters()
 {
-	return(((double)QuantityOfMasters) / ((double)QuantityOfStudents) * 100);
+	return(((double)quantityOfMasters) / ((double)quantityOfStudents) * 100);
 }
 
-//Метод подсчёта процентного кол-ва докторов наук среди преподавателей !!!!!
-double faculty::ProcentOfDoctors()
+double Faculty::GetProcentOfDoctors()
 {
-	return(((double)QuantityOfDoctors) / ((double)QuantityOfTeachers) * 100);
+	return(((double)quantityOfDoctors) / ((double)quantityOfTeachers) * 100);
 }
 
-//Метод подсчёта кол-ва студентов, приходящихся на одного преподавателя !!!!!
-double faculty::ProcOfStudToTeach()
+double Faculty::GetStudToTeachRatio()
 {
-	return(((double)QuantityOfStudents) / ((double)QuantityOfTeachers));
+	return(((double)quantityOfStudents) / ((double)quantityOfTeachers));
 }
 
 
-bool faculty::Init(char buf_FacultyName[], int stud_quan, int bach_quan, int mast_quan, int teac_quan, int cand_quan, int doct_quan, int disc_quan)
+
+bool Faculty::Init(string bufFacultyName, int studentsQuantity, int bachelorsQuantity, int mastersQuantity, int teachersQuantity, int candidatesQuantity, int doctorsQuanity, int discpilinesQuantity)
 {
-
-	//создаём объект класса faculty для проверки формата входных данных
-	faculty check;
-
-	//проверка на формат ввода 
-	if (check.SetFacultyName(buf_FacultyName) || check.SetQuantityOfStudents(stud_quan) ||
-		check.SetQuantityOfBachelors(bach_quan) || check.SetQuantityOfMasters(mast_quan) ||
-		check.SetQuantityOfTeachers(teac_quan) || check.SetQuantityOfCandidates(cand_quan) ||
-		check.SetQuantityOfDoctors(doct_quan) || check.SetQuantityOfDisciplines(disc_quan))
+	Faculty check;
+ 
+	if (check.SetFacultyName(bufFacultyName) || check.SetQuantityOfStudents(studentsQuantity) ||
+		check.SetQuantityOfBachelors(bachelorsQuantity) || check.SetQuantityOfMasters(mastersQuantity) ||
+		check.SetQuantityOfTeachers(teachersQuantity) || check.SetQuantityOfCandidates(candidatesQuantity) ||
+		check.SetQuantityOfDoctors(doctorsQuanity) || check.SetQuantityOfDisciplines(discpilinesQuantity))
 		return (true);
 	else
 	{
-		SetFacultyName(buf_FacultyName);
-		SetQuantityOfStudents(stud_quan);
-		SetQuantityOfBachelors(bach_quan);
-		SetQuantityOfMasters(mast_quan);
-		SetQuantityOfTeachers(teac_quan);
-		SetQuantityOfCandidates(cand_quan);
-		SetQuantityOfDoctors(doct_quan);
-		SetQuantityOfDisciplines(disc_quan);
+		SetFacultyName(bufFacultyName);
+		SetQuantityOfStudents(studentsQuantity);
+		SetQuantityOfBachelors(bachelorsQuantity);
+		SetQuantityOfMasters(mastersQuantity);
+		SetQuantityOfTeachers(teachersQuantity);
+		SetQuantityOfCandidates(candidatesQuantity);
+		SetQuantityOfDoctors(doctorsQuanity);
+		SetQuantityOfDisciplines(discpilinesQuantity);
 		return (false);
 	}
 }
 
-//Метод ввода полей объекта класса из консоли
-bool faculty::Read()
+bool Faculty::Read()
 {
-	//создаём объект класса faculty для проверки формата входных данных
-	faculty check;
+	Faculty check;
+	string bufString;
+	int bufInt;
 
-	//создаём буферную строку для проверки формата входных данных
-	char buf_string[30];
-
-	printf("Enter faculty name:\n");
-	fgets(buf_string, 30, stdin);
-	//если строка короче 30, то заменить "перенос на новую строку" "концом строки"
-	if (buf_string[strlen(buf_string) - 1] == '\n')
-		buf_string[strlen(buf_string) - 1] = '\0';
-	//если строка длиннее 30, то очистить входной поток
-	else rewind(stdin);
-
-	//попытка записи в поле объекта
-	if (check.SetFacultyName(buf_string))
+	cout << "Enter faculty name:\n";
+	cin >> bufString;
+	if (check.SetFacultyName(bufString))
 		return (true);
-	else
-	{
-		//буферный переменная типа int 
-		//для проверки формата входных данных 
-		int buf_int;
-
-		//проверка на формат входных данных
-		printf("Enter quantity of students:\n");
-		if (scanf("%d", &buf_int) != 1)
-			return (true);
-		else
-		{
-			//попытка записи в поле объекта
-			if (check.SetQuantityOfStudents(buf_int))
-				return (true);
-			else
-			{
-				//проверка на формат входных данных
-				printf("Enter quantity of bachelors:\n");
-				if (scanf("%d", &buf_int) != 1)
-					return (true);
-				else
-				{
-					//попытка записи в поле объекта
-					if (check.SetQuantityOfBachelors(buf_int))
-						return (true);
-					else
-					{
-						//проверка на формат входных данных
-						printf("Enter quantity of masters:\n");
-						if (scanf("%d", &buf_int) != 1)
-							return (true);
-						else
-						{
-							//попытка записи в поле объекта
-							if (check.SetQuantityOfMasters(buf_int))
-								return (true);
-							else
-							{
-								//проверка на формат входных данных
-								printf("Enter quantity of teachers:\n");
-								if (scanf("%d", &buf_int) != 1)
-									return (true);
-								else
-								{
-									//попытка записи в поле объекта
-									if (check.SetQuantityOfTeachers(buf_int))
-										return (true);
-									else
-									{
-										//проверка на формат входных данных
-										printf("Enter quantity of candidates:\n");
-										if (scanf("%d", &buf_int) != 1)
-											return (true);
-										else
-										{
-											//попытка записи в поле объекта
-											if (check.SetQuantityOfCandidates(buf_int))
-												return (true);
-											else
-											{
-												//проверка на формат входных данных
-												printf("Enter quantity of doctors:\n");
-												if (scanf("%d", &buf_int) != 1)
-													return (true);
-												else
-												{
-													//попытка записи в поле объекта
-													if (check.SetQuantityOfDoctors(buf_int))
-														return (true);
-													else
-													{
-														//проверка на формат входных данных
-														printf("Enter quantity of disciplines:\n");
-														if (scanf("%d", &buf_int) != 1)
-															return (true);
-														else
-														{
-															//попытка записи в поле объекта
-															if (check.SetQuantityOfDisciplines(buf_int))
-																return (true);
-															else
-															{
-																SetFacultyName(check.GetFacultyName());
-																SetQuantityOfStudents(check.GetQuantityOfStudents());
-																SetQuantityOfBachelors(check.GetQuantityOfBachelors());
-																SetQuantityOfMasters(check.GetQuantityOfMasters());
-																SetQuantityOfTeachers(check.GetQuantityOfTeachers());
-																SetQuantityOfCandidates(check.GetQuantityOfCandidates());
-																SetQuantityOfDoctors(check.GetQuantityOfDoctors());
-																SetQuantityOfDisciplines(check.GetQuantityOfDisciplines());
-																return (false);
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+	
+	cout << "Enter quantity of students:\n";
+	cin >> bufInt;
+	if (check.SetQuantityOfStudents(bufInt))
+		return (true);
+			
+	cout << "Enter quantity of bachelors:\n";
+	cin >> bufInt;
+	if (check.SetQuantityOfBachelors(bufInt))
+		return (true);
+					
+	cout << "Enter quantity of masters:\n";
+	cin >> bufInt;
+	if (check.SetQuantityOfMasters(bufInt))
+		return (true);
+								
+	cout << "Enter quantity of teachers:\n";
+	cin >> bufInt;
+	if (check.SetQuantityOfTeachers(bufInt))
+		return (true);
+									
+	cout << "Enter quantity of candidates:\n";
+	cin >> bufInt;
+	if (check.SetQuantityOfCandidates(bufInt))
+		return (true);
+			
+	cout << "Enter quantity of doctors:\n";
+	cin >> bufInt;
+	if (check.SetQuantityOfDoctors(bufInt))
+		return (true);
+													
+	cout << "Enter quantity of disciplines:\n";
+	cin >> bufInt;
+	if (check.SetQuantityOfDisciplines(bufInt))
+		return (true);
+															
+	Init(check.GetFacultyName(), check.GetQuantityOfStudents(), 
+		check.GetQuantityOfBachelors(), check.GetQuantityOfMasters(), 
+		check.GetQuantityOfTeachers(), check.GetQuantityOfCandidates(),
+		check.GetQuantityOfDoctors(), check.GetQuantityOfDisciplines());
+	return (false);												
 }
 
-//Метод вывода содержимого объекта класса в консоль
-void faculty::Display()
+void Faculty::Display()
 {
-	printf("faculty name: %s\n", FacultyName);
-	printf("quantity of students: %d\n", QuantityOfStudents);
-	printf("quantity of bachelors: %d\n", QuantityOfBachelors);
-	printf("quantity of masters: %d\n\n", QuantityOfMasters);
+	cout << "faculty name: " << facultyName << endl;
+	cout << "quantity of students:" << quantityOfStudents << endl;
+	cout << "quantity of bachelors: " << quantityOfBachelors << endl;
+	cout << "quantity of masters: " << quantityOfMasters << endl;
 
-	printf("quantity of teachers: %d\n", QuantityOfTeachers);
-	printf("quantity of candidates: %d\n", QuantityOfCandidates);
-	printf("quantity of doctors: %d\n\n", QuantityOfDoctors);
+	cout << "quantity of teachers: " << quantityOfTeachers << endl;
+	cout << "quantity of candidates: " << quantityOfCandidates << endl;
+	cout << "quantity of doctors: " << quantityOfDoctors << endl;
 
-	printf("quantity of disciplines: %d\n", QuantityOfDisciplines);
+	cout << "quantity of disciplines: " << quantityOfDisciplines << endl;
 }

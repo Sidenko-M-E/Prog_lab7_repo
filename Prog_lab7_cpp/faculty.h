@@ -1,61 +1,50 @@
-class faculty
+#pragma once
+#include <string>
+using namespace std;
+
+
+class Faculty
 {
 private:
-	char FacultyName[30];//название факультета
-	int QuantityOfStudents;	 //кол-во студетов на факультете
-	int QuantityOfBachelors; //кол-во обучающихся на бакалавриате
-	int QuantityOfMasters;	 //кол-во обучающихся в магистратуре
-
-	int QuantityOfTeachers;	  //кол-во преподавателей
-	int QuantityOfCandidates; //кол-во кандидатов наук
-	int QuantityOfDoctors;    //кол-во докторов наук
-	
-	int QuantityOfDisciplines;//кол-во преподаваемых дисциплин
+	string facultyName;
+	int quantityOfStudents;
+	int quantityOfBachelors;
+	int quantityOfMasters;
+	int quantityOfTeachers;
+	int quantityOfCandidates;
+	int quantityOfDoctors;
+	int quantityOfDisciplines;
 
 public:
-	//Методы установки...
-	bool SetFacultyName(char buf_string[]);//названия факультета
-	bool SetQuantityOfStudents(int buf);//кол-ва студетов на факультете
-	bool SetQuantityOfBachelors(int buf);//кол-ва обучающихся на бакалавриате
-	bool SetQuantityOfMasters(int buf); //кол-ва обучающихся в магистратуре
+	bool SetFacultyName(string bufString);
+	bool SetQuantityOfStudents(int buf);
+	bool SetQuantityOfBachelors(int buf);
+	bool SetQuantityOfMasters(int buf);
+	bool SetQuantityOfTeachers(int buf);
+	bool SetQuantityOfCandidates(int buf);
+	bool SetQuantityOfDoctors(int buf);
+	bool SetQuantityOfDisciplines(int buf);
 
-	bool SetQuantityOfTeachers(int buf);//кол-ва преподавателей
-	bool SetQuantityOfCandidates(int buf);//кол-ва кандидатов наук
-	bool SetQuantityOfDoctors(int buf);//кол-ва докторов наук
+	bool SetStudentsInfo(int allQuantity, int bachelorsQuantity, int mastersQuantity);
+	bool SetTeachersInfo(int allQuantity, int candidatesQuantity, int doctorsQuantity);
 
-	bool SetQuantityOfDisciplines(int buf);//кол-ва преподаваемых дисциплин
+	string GetFacultyName();
+	int GetQuantityOfStudents();
+	int GetQuantityOfBachelors();
+	int GetQuantityOfMasters();
+	int GetQuantityOfTeachers();
+	int GetQuantityOfCandidates();
+	int GetQuantityOfDoctors();
+	int GetQuantityOfDisciplines();
 
-	bool SetStudentsInfo(int all_quan, int bach_quan, int mast_quan);//информации о студентах
-	
-	bool SetTeachersInfo(int all_quan, int cand_quan, int doct_quan);//информации о преподавателях
+	double GetProcentOfMasters();
+	double GetProcentOfDoctors();
+	double GetStudToTeachRatio();
 
-	//Методы извлечения...
-	char* GetFacultyName();//названия факультета
-	int GetQuantityOfStudents();//кол-ва студетов на факультете
-	int GetQuantityOfBachelors();//кол-ва обучающихся на бакалавриате
-	int GetQuantityOfMasters(); //кол-ва обучающихся в магистратуре
-
-	int GetQuantityOfTeachers();//кол-ва преподавателей
-	int GetQuantityOfCandidates();//кол-ва кандидатов наук
-	int GetQuantityOfDoctors();//кол-ва докторов наук
-
-	int GetQuantityOfDisciplines();//кол-ва преподаваемых дисциплин
-
-	//Метод подсчёта процентного кол-ва магистров среди учащихся
-	double ProcentOfMasters();
-
-	//Метод подсчёта процентного кол-ва докторов наук среди преподавателей
-	double ProcentOfDoctors();
-
-	//Метод подсчёта кол-ва студентов, приходящихся на одного преподавателя
-	double ProcOfStudToTeach();
-
-	//Метод  инициализации объекта класса
-	bool Init(char buf_FacultyName[], int stud_quan, int bach_quan, int mast_quan, int teac_quan, int cand_quan, int doct_quan, int disc_quan);
-
-	//Метод ввода полей объекта класса из консоли
+	bool Init(string bufFacultyName, int studentsQuantity, 
+		int bachelorsQuantity, int mastersQuantity, 
+		int teachersQuantity, int candidatesQuantity, 
+		int doctorsQuanity, int discpilinesQuantity);
 	bool Read();
-
-	//Метод вывода содержимого объекта класса в консоль
 	void Display();
 };

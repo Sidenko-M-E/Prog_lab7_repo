@@ -1,11 +1,10 @@
 #include <conio.h>
 #include <iostream>
-//#include <string.h>
-//#include "faculty.h"
 #include "Fio.h"
 #include "Human.h"
 #include "Student.h"
 #include "Teacher.h"
+#include "Faculty.h"
 
 //test
 	/*
@@ -116,73 +115,65 @@ int main()
 		myTeacher.Display();
 
 
-	/*
-	///faculty struct
-	cout << "\n------faculty class----------\n");
 
-	//Создание нового объекта из готовых данных
-	printf("-------Init method-------\n");
-	faculty my_faculty;
-	if (my_faculty.Init(facultyName, 180, 145, 35, 40, 20, 5, 70))
-		printf("error\n");
+	cout << "\n------Faculty class----------\n";
+	cout << "-------Init method-------\n";
+	Faculty myFaculty;
+	if (myFaculty.Init("FoHS", 180, 145, 35, 40, 20, 5, 70))
+		cout << "error\n";
 	else
-		my_faculty.Display();
+		myFaculty.Display();
 
-	//Ввод полей объекта из консоли
-	printf("\n------Read method------\n");
-	if (my_faculty.Read())
-		printf("error\n");
+	cout << "\n------Read method------\n";
+	if (myFaculty.Read())
+		cout << "error\n";
 	else
-		my_faculty.Display();
+		myFaculty.Display();
 
-	//Ввод полей объекта с помощью методов
-	printf("\n------Shortcut-Set methods-------\n");
-	my_faculty.SetStudentsInfo(300, 270, 30);
-	my_faculty.SetTeachersInfo(40, 33, 7);
-	my_faculty.Display();
+	cout << "\n------Shortcut-Set methods-------\n";
+	myFaculty.SetStudentsInfo(300, 270, 30);
+	myFaculty.SetTeachersInfo(40, 33, 7);
+	myFaculty.Display();
 
-	//Метод вывода содержимого объекта класса в консоль
-	printf("\n----processing by functions----\n");
-	printf("Procent of masters on faculty: %0.2lf\n", my_faculty.ProcentOfMasters());
-	printf("Procent of doctors on faculty: %0.2lf\n", my_faculty.ProcentOfDoctors());
-	printf("Students to teachers quantity: %0.2lf\n", my_faculty.ProcOfStudToTeach());
-
+	cout << "\n----processing by functions----\n";
+	cout.precision(2);
+	cout << "Procent of masters on faculty: " << myFaculty.GetProcentOfMasters() << endl;
+	cout << "Procent of doctors on faculty: " << myFaculty.GetProcentOfDoctors() << endl;
+	cout << "Students to teachers ratio: " << myFaculty.GetStudToTeachRatio() << endl;
 
 
-	///Демонстрация работы с памятью
-	printf("\n------dynamic memmory demo------\n");
-	printf("----dynamic array of objects----\n");
 
-	int count; //кол-во объектов динамического массива
+	cout << "\n------dynamic memmory demo------\n";
+	cout << "----dynamic array of objects----\n";
+	int count;
 	printf("Enter the number of objects, that you want to create:\n");
-	scanf("%d", &count);
+	cin >> count;
 
 	//dynamic_array[i] - объект класса 
-	faculty* dynamic_array = new faculty[count];//динамический массив объектов класса faculty.
+	Faculty* dynamicArray = new Faculty[count];//динамический массив объектов класса faculty.
 	for (int i = 0; i < count; i++) 
 	{
-		dynamic_array[i].Init(facultyName, i, i, i, i, i, i, i);
-		dynamic_array[i].Display();
-		printf("******************\n");
+		dynamicArray[i].Init("SMTH", i, i, i, i, i, i, i);
+		dynamicArray[i].Display();
+		cout << "******************\n";
 	}
-	delete[] dynamic_array;
+	delete[] dynamicArray;
 	
-	printf("\n----array of 5 dynamic objects----\n\n");
+	cout << "\n----array of 5 dynamic objects----\n\n";
 	//создание 5 указателей на объекты класса faculty
 	//содержимое этих указателей не определено!!!
 	//array_of_dynamic[i] - указатель на объект
-	faculty* array_of_dynamic[5];
+	Faculty* arrayOfDynamic[5];
 	for (int i = 0; i < 5; i++) 
 	{
 		//определяем содержимое каждого из указателей
-		array_of_dynamic[i] = new faculty;
-		array_of_dynamic[i]->Init(facultyName, i, i, i, i, i, i, i);
-		(*array_of_dynamic[i]).Display(); //(*smth). взаимозаменяемо с smth->
-		printf("******************\n");
-		delete array_of_dynamic[i];
+		arrayOfDynamic[i] = new Faculty;
+		arrayOfDynamic[i]->Init("SMTH", i, i, i, i, i, i, i);
+		(*arrayOfDynamic[i]).Display(); //(*smth). взаимозаменяемо с smth->
+		cout << "******************\n";
+		delete arrayOfDynamic[i];
 	}
-	*/
 	//Конец демонстрационного варианта
-	printf("\nPress any key to exit.\n");
+	cout << "\nPress any key to exit.\n";
 	_getch();
 }
