@@ -1,11 +1,12 @@
 #include <conio.h>
 #include <iostream>
 //#include <string.h>
-//#include "student.h"
+
 //#include "teacher.h"
 //#include "faculty.h"
 #include "Fio.h"
 #include "Human.h"
+#include "Student.h"
 
 //test
 	/*
@@ -69,39 +70,31 @@ int main()
 		myHuman.Display();
 
 
-	/*
-	///student struct
-	printf("\n--------student class--------\n");
-	char EduProg[] = "Bachelor";
-	char Group[] = "PI-03";
-	char FacultyName[] = "FoIT";
 
-	//Создание нового объекта из готовых данных
-	printf("-------Init method-------\n");
-	student my_student;
-	if (my_student.Init(3, EduProg, Group, FacultyName, myHuman))
-		printf("error\n");
+	cout << "\n--------Student class--------\n";
+	cout << "-------Init method-------\n";
+	Student myStudent;
+	if (myStudent.Init(3, "Bachelor", "PI-03", "FoIT", myHuman))
+		cout << "error\n";
 	else 
-		my_student.Display();
+		myStudent.Display();
 
-	//Ввод полей объекта из консоли
-	printf("\n------Read method------\n");
-	if (my_student.Read())
-		printf("error\n");
+	cout << "\n------Read method------\n";
+	if (myStudent.Read())
+		cout << "error\n";
 	else
-		my_student.Display();
+		myStudent.Display();
 
-	//Ввод полей объекта с помощью методов
 	printf("\n------Set methods-------\n");
-	if (my_student.SetCourse(4) || my_student.SetEduProg(strcpy(EduProg, "Master")) || 
-		my_student.SetGroup(strcpy(Group, "CS-91")) ||
-		my_student.SetFacultyName(strcpy(FacultyName, "FoIT")))
+	if (myStudent.SetCourse(4) || myStudent.SetEduProg("Master") || 
+		myStudent.SetGroup("CS-91") ||
+		myStudent.SetFacultyName("FoIT"))
 		printf("error\n");
 	else
-		my_student.Display();
+		myStudent.Display();
 
 
-
+	/*
 	///teacher struct
 	printf("\n--------teacher class--------\n");
 	char Degree[40] = "Candidate of Mathematical Sciences";
@@ -109,7 +102,7 @@ int main()
 	//Создание нового объекта из готовых данных
 	printf("-------Init method-------\n");
 	teacher my_teacher;
-	if (my_teacher.Init(40, Degree, FacultyName, myHuman))
+	if (my_teacher.Init(40, Degree, facultyName, myHuman))
 		printf("error\n");
 	else
 		my_teacher.Display();
@@ -123,7 +116,7 @@ int main()
 
 	//Ввод полей объекта с помощью методов
 	printf("\n------Set methods-------\n");
-	if (my_teacher.SetWorkExp(30) || my_teacher.SetDegree(strcpy(Degree, "Doctor of Mathematical Sciences")) || my_teacher.SetFacultyName(FacultyName))
+	if (my_teacher.SetWorkExp(30) || my_teacher.SetDegree(strcpy(Degree, "Doctor of Mathematical Sciences")) || my_teacher.SetFacultyName(facultyName))
 		printf("error\n");
 	else
 		my_teacher.Display();
@@ -136,7 +129,7 @@ int main()
 	//Создание нового объекта из готовых данных
 	printf("-------Init method-------\n");
 	faculty my_faculty;
-	if (my_faculty.Init(FacultyName, 180, 145, 35, 40, 20, 5, 70))
+	if (my_faculty.Init(facultyName, 180, 145, 35, 40, 20, 5, 70))
 		printf("error\n");
 	else
 		my_faculty.Display();
@@ -174,7 +167,7 @@ int main()
 	faculty* dynamic_array = new faculty[count];//динамический массив объектов класса faculty.
 	for (int i = 0; i < count; i++) 
 	{
-		dynamic_array[i].Init(FacultyName, i, i, i, i, i, i, i);
+		dynamic_array[i].Init(facultyName, i, i, i, i, i, i, i);
 		dynamic_array[i].Display();
 		printf("******************\n");
 	}
@@ -189,7 +182,7 @@ int main()
 	{
 		//определяем содержимое каждого из указателей
 		array_of_dynamic[i] = new faculty;
-		array_of_dynamic[i]->Init(FacultyName, i, i, i, i, i, i, i);
+		array_of_dynamic[i]->Init(facultyName, i, i, i, i, i, i, i);
 		(*array_of_dynamic[i]).Display(); //(*smth). взаимозаменяемо с smth->
 		printf("******************\n");
 		delete array_of_dynamic[i];

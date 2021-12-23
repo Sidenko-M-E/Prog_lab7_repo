@@ -1,33 +1,28 @@
-#include "human.h"
+#pragma once
+#include "Human.h"
 
-class student {
+
+class Student {
 private:
-	int course;  //курс обучения
-	char EduProg[FIO_fields_size / 3 * 2];//учебная программа
-	char Group[FIO_fields_size / 3];	  //название группы
-	char FacultyName[FIO_fields_size];	  //название факультета
+	int course;
+	string eduProg;
+	string group;
+	string facultyName;
 
 public:
-	human thehuman; //объект класса "human"
+	Human humanField;
 
-	//Методы установки...
-	bool SetCourse(int buf);//курса обучения
-	bool SetEduProg(char buf_string[]); //учебной программы
-	bool SetGroup(char buf_string[]);	//названия группы
-	bool SetFacultyName(char buf_string[]);//названия факультета
+	bool SetCourse(int buf);
+	bool SetEduProg(string bufString);
+	bool SetGroup(string bufString);
+	bool SetFacultyName(string bufString);
 
-	//Методы извлечения...
-	int GetCourse();//курса обучения
-	char* GetEduProg(); //учебной программы
-	char* GetGroup();	//названия группы
-	char* GetFacultyName();//названия факультета
+	int GetCourse();
+	string GetEduProg();
+	string GetGroup();
+	string GetFacultyName();
 
-	//Метод  инициализации объекта класса
-	bool Init(int buf_course, char buf_EduProg[], char buf_Group[], char buf_FacultyName[], human buf_human);
-
-	//Метод ввода полей объекта класса из консоли
+	bool Init(int bufCourse, string bufEduProg, string bufGroup, string bufFacultyName, Human bufHuman);
 	bool Read();
-
-	//Метод вывода содержимого объекта класса в консоль
 	void Display();
 };
