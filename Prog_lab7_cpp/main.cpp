@@ -5,7 +5,7 @@
 //#include "teacher.h"
 //#include "faculty.h"
 #include "Fio.h"
-//#include "human.h"
+#include "Human.h"
 
 //test
 	/*
@@ -27,55 +27,49 @@
 
 int main()
 {
-	cout << "--------FIO class--------" << endl;
+	cout << "--------Fio class--------" << endl;
 	cout << "------Init method-------" << endl;
 	Fio myFio;
 	myFio.Init("Popov", "Alexandr", "Dmitrievich");
 	myFio.Display();
 
-	printf("\n---Read method---\n");
+	cout << endl << "---Read method---" << endl;
 	if (!myFio.Read())
 		myFio.Display();
 	else
-		printf("error\n");
+		cout << "error" << endl;
 
-	printf("\n------Set methods-------\n");
+	cout << endl << "------Set methods-------" << endl;
 	if (myFio.SetSurname("Ivanov") || myFio.SetName("Ivan") || myFio.SetPatronymic(" Ivanovich "))
-		printf("error\n");
+		cout << "error" << endl;
 	else
 		myFio.Display();
 
+
+
+	cout << endl << "--------Human class--------" << endl;
+	cout << endl << "-------Init method-------" << endl;
+	Human myHuman;
+	if(myHuman.Init(1913, 19, 70, 182, 'F', myFio))
+		cout << "error" << endl;
+	else
+		myHuman.Display();
+	
+	cout << "\n------Read method------\n";
+	if (myHuman.Read())
+		cout << "error\n";
+	else
+		myHuman.Display();
+
+	cout << "\n------Set methods-------\n";
+	if (myHuman.SetId(1999) || myHuman.SetAge(27) || myHuman.SetHeight(180) ||
+		myHuman.SetWeight(80.890) || myHuman.SetGender('M'))
+		cout << "error\n";
+	else
+		myHuman.Display();
+
+
 	/*
-	///human struct
-	printf("\n--------human class--------\n");
-
-	//Создание нового объекта из готовых данных
-	printf("-------Init method-------\n");
-	human me;
-	char gender[] = "F";
-	
-	if(me.Init(1913, 19, 70, 182, gender, my_FIO))
-		printf("error\n");
-	else
-		me.Display();
-	
-	//Ввод полей объекта из консоли
-	printf("\n------Read method------\n");
-	if (me.Read())
-		printf("error\n");
-	else
-		me.Display();
-
-	//Ввод полей объекта с помощью методов
-	printf("\n------Set methods-------\n");
-	if (me.SetId(1999) || me.SetAge(27) || me.SetHeight(180) ||
-		me.SetWeight(80.890) || me.SetGender(strcpy(gender, "M")))
-		printf("error\n");
-	else
-		me.Display();
-
-
-
 	///student struct
 	printf("\n--------student class--------\n");
 	char EduProg[] = "Bachelor";
@@ -85,7 +79,7 @@ int main()
 	//Создание нового объекта из готовых данных
 	printf("-------Init method-------\n");
 	student my_student;
-	if (my_student.Init(3, EduProg, Group, FacultyName, me))
+	if (my_student.Init(3, EduProg, Group, FacultyName, myHuman))
 		printf("error\n");
 	else 
 		my_student.Display();
@@ -115,7 +109,7 @@ int main()
 	//Создание нового объекта из готовых данных
 	printf("-------Init method-------\n");
 	teacher my_teacher;
-	if (my_teacher.Init(40, Degree, FacultyName, me))
+	if (my_teacher.Init(40, Degree, FacultyName, myHuman))
 		printf("error\n");
 	else
 		my_teacher.Display();

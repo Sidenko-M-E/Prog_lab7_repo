@@ -1,15 +1,10 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
+#include "Human.h"
 #include <cmath>
-#include <string.h>
-#include "human.h"
+#include <string>
+#include <iostream>
 
-//Защита от переопределения методов структуры
-#ifndef HUMAN_CPP
-#define HUMAN_CPP
 
-//Метод установки id
-bool human::SetId(int buf)
+bool Human::SetId(int buf)
 {
 	if (buf < 0 || buf > 9999)
 		return (true);
@@ -20,8 +15,7 @@ bool human::SetId(int buf)
 	}
 }
 
-//Метод установки возраста
-bool human::SetAge(int buf)
+bool Human::SetAge(int buf)
 {
 	if (buf < 0 || buf > 200)
 		return (true);
@@ -32,8 +26,7 @@ bool human::SetAge(int buf)
 	}
 }
 
-//Метод установки роста
-bool human::SetHeight(int buf)
+bool Human::SetHeight(int buf)
 {
 	if (buf < 40 || buf > 300)
 		return (true);
@@ -44,8 +37,7 @@ bool human::SetHeight(int buf)
 	}
 }
 
-//Метод установки веса
-bool human::SetWeight(float buf)
+bool Human::SetWeight(double buf)
 {
 	buf = round(buf * 10) / 10;
 	if (buf < 0 || buf > 650)
@@ -57,72 +49,48 @@ bool human::SetWeight(float buf)
 	}
 }
 
-//Метод установки пола
-bool human::SetGender(char buf_string[])
+bool Human::SetGender(char buf)
 {
-	//обрезка входной строки
-	if (strlen(buf_string) >= 2)
-		buf_string[2 - 1] = '\0';
-
-	//проверка на ввод пустой строки
-	if (strlen(buf_string) == 0)
-		return (true);
-
-	//сравнение входной строки и допустимых символов
-	if (buf_string[0] == 'M' || buf_string[0] == 'F')
+	if (buf == 'M' || buf == 'F')
 	{
-		strcpy(gender, buf_string);
-		return(false);
+		gender = buf;
+		return (false);
 	}
 	else
 		return (true);
 }
 
-//Метод извлечения id
-int human::GetId()
+int Human::GetId()
 {
-	int buf = id;
-	return (buf);
+	return (id);
 }
 
-//Метод извлечения возраста
-int human::GetAge()
+int Human::GetAge()
 {
-	int buf = age;
-	return (buf);
+	return (age);
 }
 
-//Метод извлечения роста
-int human::GetHeight()
+int Human::GetHeight()
 {
-	int buf = height;
-	return (buf);
+	return (height);
 }
 
-//Метод извлечения веса
-float human::GetWeight()
+double Human::GetWeight()
 {
-	float buf = weight;
-	return (buf);
+	return (weight);
 }
 
-//Метод извлечения пола
-char* human::GetGender()
+char Human::GetGender()
 {
-	char* buf_string = (char*)calloc(2, sizeof(char));
-	strcpy(buf_string, gender);
-	return (buf_string);
+	return (gender);
 }
 
-//Метод инициализации объекта класса
-bool human::Init(int buf_id, int buf_age, int buf_height, float buf_weight, char buf_gender[], FIO buf_FIO)
+bool Human::Init(int bufId, int bufAge, int bufHeight, double bufWeight, char bufGender, Fio bufFio)
 {
-	//создаём объект класса human для проверки формата входных данных
-	human check;
+	Human check;
 
-	//проверка на формат ввода FIO??????????
-	if (check.SetId(buf_id) || check.SetAge(buf_age) || check.SetHeight(buf_height) || 
-		check.SetWeight(buf_weight) || check.SetGender(buf_gender))
+	if (check.SetId(bufId) || check.SetAge(bufAge) || check.SetHeight(bufHeight) || 
+		check.SetWeight(bufWeight) || check.SetGender(bufGender))
 		return (true);
 	else
 	{
@@ -131,124 +99,58 @@ bool human::Init(int buf_id, int buf_age, int buf_height, float buf_weight, char
 		SetHeight(check.GetHeight());
 		SetWeight(check.GetWeight());
 		SetGender(check.GetGender());
-		human_FIO = buf_FIO;
+		fioField = bufFio;
 		return (false);
 	}
 }
 
-//Метод ввода полей объекта класса из консоли
-bool human::Read()
+bool Human::Read()
 {
-	//создаём объект класса human для проверки формата входных данных
-	human check;
+	Human check;
+	int bufInt;
+	double bufDouble;
+	char bufChar;
 
-	//буферный переменная типа int 
-	//для проверки формата входных данных 
-	int buf_int;
-
-	//проверка на формат входных данных
-	printf("Enter id:\n");
-	if (scanf("%d", &buf_int) != 1)
+	cout << "Enter id:" << endl;
+	cin >> bufInt;	
+	if (check.SetId(bufInt))
 		return (true);
-	else 
-	{
-		//попытка записи в поле объекта
-		if (check.SetId(buf_int))
-			return (true);
-		else
-		{
-			//проверка на формат входных данных
-			printf("Enter age:\n");
-			if (scanf("%d", &buf_int) != 1)
-				return (true);
-			else
-			{
-				//попытка записи в поле объекта
-				if (check.SetAge(buf_int))
-					return (true);
-				else
-				{
-					//проверка на формат входных данных
-					printf("Enter height:\n");
-					if (scanf("%d", &buf_int) != 1)
-						return (true);
-					else
-					{
-						//попытка записи в поле объекта
-						if (check.SetHeight(buf_int))
-							return (true);
-						else
-						{
-							//буферный переменная типа float
-							//для проверки формата входных данных 
-							float buf_float;
+		
+	cout << "Enter age:" << endl;
+	cin >> bufInt;
+	if (check.SetAge(bufInt))
+		return (true);
+				
+	cout << "Enter height:" << endl;
+	cin >> bufInt;
+	if (check.SetHeight(bufInt))
+		return (true);
+			
+	cout << "Enter weight:" << endl;
+	cin >> bufDouble;		
+	if (check.SetWeight(bufDouble))
+		return (true);
 
-							//проверка на формат входных данных
-							printf("Enter weight:\n");
-							if (scanf("%f", &buf_float) != 1)
-								return (true);
-							else
-							{
-								//попытка записи в поле объекта
-								if (check.SetWeight(buf_float))
-									return (true);
-								else
-								{
-									//буферный переменная типа char
-									//для проверки формата входных данных 
-									char buf_string[2];
+	cout << "Enter gender:" << endl;
+	cin >> bufChar;
+	if (check.SetGender(bufChar))
+		return(true);
 
-									//проверка на формат входных данных
-									printf("Enter gender:\n");
-									rewind(stdin);
-									fgets(buf_string, 2, stdin);
-									//если строка короче 3, то заменить "перенос на новую строку" "концом строки"
-									if (buf_string[strlen(buf_string) - 1] == '\n')
-										buf_string[strlen(buf_string) - 1] = '\0';
-									//если строка длиннее 2, то очистить входной поток
-									else rewind(stdin);
+	if (check.fioField.Read())
+		return (true);
 
-									//попытка записи в поле объекта
-									if (check.SetGender(buf_string))
-										return(true);
-									else
-									{
-										//попытка записи в объект
-										if (check.human_FIO.Read())
-											return (true);
-
-										//когда все проверки пройдены,
-										//можно перенести данные в главный объект
-										else
-										{
-											SetId(check.GetId());
-											SetAge(check.GetAge());
-											SetHeight(check.GetHeight());
-											SetWeight(check.GetWeight());
-											SetGender(check.GetGender());
-											human_FIO = check.human_FIO;
-											return(false);
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+	Init(check.GetId(), check.GetAge(), check.GetHeight(), 
+		check.GetWeight(), check.GetGender(), check.fioField);
+	return(false);								
 }
 
-//Метод вывода содержимого объекта класса в консоль
-void human::Display()
+void Human::Display()
 {
-	printf("id: %d\n", id);
-	printf("age: %d\n", age);
-	printf("height: %d\n", height);
-	printf("weight: %0.1f\n", weight);
-	printf("gender: %s\n", gender);
-	human_FIO.Display();
+	cout << "id: " << id << endl;
+	cout << "age: " << age << endl;
+	cout << "height: " << height << endl;
+	cout << "weight: " << weight << endl;
+	cout.precision(2);
+	cout << "gender: " << gender << endl;
+	fioField.Display();
 }
-
-#endif HUMAN_CPP

@@ -1,42 +1,30 @@
-#include "FIO.h"
+#pragma once
+#include "Fio.h"
 
-//Защита от переопределения структуры
-#ifndef HUMAN_H
-#define HUMAN_H
-
-class human {
+class Human {
 private:
-	int id;		//id
-	int age;	//возраст
-	int height; //рост
-	float weight; //вес
-	char gender[2];  //пол
+	int id;
+	int age;
+	int height;
+	double weight;
+	char gender;
 
 public:
-	FIO human_FIO;	  //объект класса FIO
+	Fio fioField;
 
-	//Методы установки... 
-	bool SetId(int buf); //id
-	bool SetAge(int buf);//возраста
-	bool SetHeight(int buf);  //роста
-	bool SetWeight(float buf);//веса
-	bool SetGender(char buf[]); //пола
+	bool SetId(int buf);
+	bool SetAge(int buf);
+	bool SetHeight(int buf);
+	bool SetWeight(double buf);
+	bool SetGender(char buf);
 
-	//Методы извлечения...
-	int GetId(); //id
-	int GetAge();//возраста
-	int GetHeight();  //роста
-	float GetWeight();//веса
-	char* GetGender(); //пола
-	
-	//Метод инициализации объекта класса
-	bool Init(int buf_id, int buf_age, int buf_height, float buf_weight,char buf_gender[], FIO buf_FIO);
+	int GetId();
+	int GetAge();
+	int GetHeight();
+	double GetWeight();
+	char GetGender();
 
-	//Метод ввода полей объекта класса из консоли
+	bool Init(int bufId, int bufAge, int bufHeight, double bufWeight, char bufGender, Fio bufFio);
 	bool Read();
-
-	//Метод вывода объекта класса в консоль
 	void Display();
 };
-
-#endif HUMAN_H
