@@ -1,12 +1,11 @@
 #include <conio.h>
 #include <iostream>
 //#include <string.h>
-
-//#include "teacher.h"
 //#include "faculty.h"
 #include "Fio.h"
 #include "Human.h"
 #include "Student.h"
+#include "Teacher.h"
 
 //test
 	/*
@@ -85,46 +84,41 @@ int main()
 	else
 		myStudent.Display();
 
-	printf("\n------Set methods-------\n");
+	cout << "\n------Set methods-------\n";
 	if (myStudent.SetCourse(4) || myStudent.SetEduProg("Master") || 
 		myStudent.SetGroup("CS-91") ||
 		myStudent.SetFacultyName("FoIT"))
-		printf("error\n");
+		cout << "error\n";
 	else
 		myStudent.Display();
 
 
+
+	cout << "\n--------Teacher class--------\n";
+	cout << "-------Init method-------\n";
+	Teacher myTeacher;
+	if (myTeacher.Init(40, "Candidate of Mathematical Sciences", 
+		"CS-091", myHuman))
+		cout << "error\n";
+	else
+		myTeacher.Display();
+
+	cout << "\n------Read method------\n";
+	if (myTeacher.Read())
+		cout << "error\n";
+	else
+		myTeacher.Display();
+
+	cout << "\n------Set methods-------\n";
+	if (myTeacher.SetWorkExp(30) || myTeacher.SetDegree("Doctor of Mathematical Sciences") || myTeacher.SetFacultyName("FoMS"))
+		cout << "error\n";
+	else
+		myTeacher.Display();
+
+
 	/*
-	///teacher struct
-	printf("\n--------teacher class--------\n");
-	char Degree[40] = "Candidate of Mathematical Sciences";
-
-	//Создание нового объекта из готовых данных
-	printf("-------Init method-------\n");
-	teacher my_teacher;
-	if (my_teacher.Init(40, Degree, facultyName, myHuman))
-		printf("error\n");
-	else
-		my_teacher.Display();
-
-	//Ввод полей объекта из консоли
-	printf("\n------Read method------\n");
-	if (my_teacher.Read())
-		printf("error\n");
-	else
-		my_teacher.Display();
-
-	//Ввод полей объекта с помощью методов
-	printf("\n------Set methods-------\n");
-	if (my_teacher.SetWorkExp(30) || my_teacher.SetDegree(strcpy(Degree, "Doctor of Mathematical Sciences")) || my_teacher.SetFacultyName(facultyName))
-		printf("error\n");
-	else
-		my_teacher.Display();
-
-
-
 	///faculty struct
-	printf("\n------faculty class----------\n");
+	cout << "\n------faculty class----------\n");
 
 	//Создание нового объекта из готовых данных
 	printf("-------Init method-------\n");
