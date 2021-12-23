@@ -1,47 +1,51 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
 #include <conio.h>
-#include <string.h>
-#include "student.h"
-#include "teacher.h"
-#include "faculty.h"
-#include "FIO.h"
-#include "human.h"
+#include <iostream>
+//#include <string.h>
+//#include "student.h"
+//#include "teacher.h"
+//#include "faculty.h"
+#include "Fio.h"
+//#include "human.h"
 
+//test
+	/*
+	FIO myFio;
+	myFio.Init("Sidenko", "Matvey", "Evgenievich");
+	myFio.Display();
+
+	FIO demoFio;
+	demoFio.Init("Petrov", "Oleg", "Victorovich");
+	demoFio.Display();
+
+	myFio = demoFio;
+	myFio.Display();
+
+	demoFio.Init("fff", "ggg", "ddd");
+	demoFio.Display();
+	myFio.Display();
+	*/
 
 int main()
 {
-	///FIO struct
-	printf("--------FIO class--------\n");
-	char Familia[30] = "Sidenko";
-	char Imya[30] = "Matvey";
-	char Otchestvo[30] = "Evgenievich";
+	cout << "--------FIO class--------" << endl;
+	cout << "------Init method-------" << endl;
+	Fio myFio;
+	myFio.Init("Popov", "Alexandr", "Dmitrievich");
+	myFio.Display();
 
-	//Создание нового объекта из готовых данных
-	printf("------Init method-------\n");
-	FIO my_FIO;
-	
-	if(my_FIO.Init(Familia, Imya, Otchestvo))
-		printf("error\n");
-	else
-		my_FIO.Display();
-
-	//Ввод полей объекта из консоли
 	printf("\n---Read method---\n");
-	if (!my_FIO.Read())
-		my_FIO.Display();
+	if (!myFio.Read())
+		myFio.Display();
 	else
 		printf("error\n");
 
-	//Ввод полей объекта с помощью методов
 	printf("\n------Set methods-------\n");
-	if ((my_FIO.SetSurName(strcpy(Familia, " Ivanov ")))||(my_FIO.SetName(strcpy(Imya, " Ivan ")))||(my_FIO.SetPatronymic(strcpy(Otchestvo, " Ivanovich "))))
+	if (myFio.SetSurname("Ivanov") || myFio.SetName("Ivan") || myFio.SetPatronymic(" Ivanovich "))
 		printf("error\n");
 	else
-		my_FIO.Display();
+		myFio.Display();
 
-
-
+	/*
 	///human struct
 	printf("\n--------human class--------\n");
 
@@ -196,7 +200,7 @@ int main()
 		printf("******************\n");
 		delete array_of_dynamic[i];
 	}
-	
+	*/
 	//Конец демонстрационного варианта
 	printf("\nPress any key to exit.\n");
 	_getch();

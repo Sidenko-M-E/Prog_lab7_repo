@@ -1,200 +1,113 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <string.h>
-#include <malloc.h>
-#include "FIO.h"
+#include "Fio.h"
+#include <iostream>
 
-//Защита от переопределения методов структуры
-#ifndef FIO_CPP
-#define FIO_CPP
 
-//Метод установки фамилии
-bool FIO::SetSurName(char buf_string[]) //проверка на \n ????
+bool Fio::SetSurname(string bufString)
 { 
-	//обрезка входной строки
-	if (strlen(buf_string) > FIO_fields_size)
-		buf_string[FIO_fields_size - 1] = '\0';
-
-	//проверка на ввод пустой строки
-	if (strlen(buf_string) == 0)
+	if (bufString.empty())
 		return (true);
 
-	//определение массива недопустимых символов
-	char invalid_symbols[] = "!@#$%^&*()_+1234567890-=\"№;:?*,./'][{}<>~` ";
-	int invalid_symbols_lenght = 43;
-
-	//посимвольное сравнение входной строки и массива недопустимых символов
-	int buf_len = strlen(buf_string);
-	for (int i = 0; i < buf_len; i++) 
-		for (int j = 0; j < invalid_symbols_lenght; j++)
-			if (buf_string[i] == invalid_symbols[j])
-				return(true);
-
-	//копирование входной строки в поле объекта,
-	//при успешном прохождении проверки
-	strcpy(SurName, buf_string);
+	char invalidSymbols[] = "!@#$%^&*()_+1234567890-=\"№;:?*,./'][{}<>~` ";
+	for (char symb : invalidSymbols)
+	{
+		if (bufString.find(symb) != (-1))
+			return (true);
+	}
+	
+	surname = bufString;
 	return (false);
 }
 
-//Метод  установки имени
-bool FIO::SetName(char buf_string[]) 
+bool Fio::SetName(string bufString) 
 {
-	//обрезка входной строки
-	if (strlen(buf_string) > FIO_fields_size)
-		buf_string[FIO_fields_size - 1] = '\0';
-
-	//проверка на ввод пустой строки
-	if (strlen(buf_string) == 0)
+	if (bufString.empty())
 		return (true);
 
-	//определение массива недопустимых символов
-	char invalid_symbols[] = "!@#$%^&*()_+1234567890-=\"№;:?*,./'][{}<>~` ";
-	int invalid_symbols_lenght = 43;
+	char invalidSymbols[] = "!@#$%^&*()_+1234567890-=\"№;:?*,./'][{}<>~` ";
+	for (char symb : invalidSymbols)
+	{
+		if (bufString.find(symb) != (-1))
+			return (true);
+	}
 
-	//посимвольное сравнение входной строки и массива недопустимых символов
-	int buf_len = strlen(buf_string);
-	for (int i = 0; i < buf_len; i++)
-		for (int j = 0; j < invalid_symbols_lenght; j++)
-			if (buf_string[i] == invalid_symbols[j])
-				return(true);
-
-	//копирование входной строки в поле объекта,
-	//при успешном прохождении проверки
-	strcpy(Name, buf_string);
+	name = bufString;
 	return (false);
 }
 
-//Метод  установки отчества
-bool FIO::SetPatronymic(char buf_string[]) 
+bool Fio::SetPatronymic(string bufString) 
 {
-	//обрезка входной строки
-	if (strlen(buf_string) > FIO_fields_size)
-		buf_string[FIO_fields_size - 1] = '\0';
-
-	//проверка на ввод пустой строки
-	if (strlen(buf_string) == 0)
+	if (bufString.empty())
 		return (true);
 
-	//определение массива недопустимых символов
-	char invalid_symbols[] = "!@#$%^&*()_+1234567890-=\"№;:?*,./'][{}<>~` ";
-	int invalid_symbols_lenght = 43;
+	char invalidSymbols[] = "!@#$%^&*()_+1234567890-=\"№;:?*,./'][{}<>~` ";
+	for (char symb : invalidSymbols)
+	{
+		if (bufString.find(symb) != (-1))
+			return (true);
+	}
 
-	//посимвольное сравнение входной строки и массива недопустимых символов
-	int buf_len = strlen(buf_string);
-	for (int i = 0; i < buf_len; i++)
-		for (int j = 0; j < invalid_symbols_lenght; j++)
-			if (buf_string[i] == invalid_symbols[j])
-				return(true);
-
-	//копирование входной строки в поле объекта,
-	//при успешном прохождении проверки
-	strcpy(Patronymic, buf_string);
+	patronymic = bufString;
 	return (false);
 }
 
-//Метод извлечения фамилии
-char* FIO::GetSurName()
+string Fio::GetSurname()
 {
-	char* buf_string = (char*)calloc(FIO_fields_size, sizeof(char));
-	strcpy(buf_string, SurName);
-	return (buf_string);
+	return (surname);
 }
 
-//Метод извлечения имени
-char* FIO::GetName() 
+string Fio::GetName() 
 { 
-	char* buf_string = (char*)calloc(FIO_fields_size, sizeof(char));
-	strcpy(buf_string, Name);
-	return (buf_string);
+	return (name);
 }
 
-//Метод извлечения отчества
-char* FIO::GetPatronymic() 
+string Fio::GetPatronymic() 
 { 
-	char* buf_string = (char*)calloc(FIO_fields_size, sizeof(char));
-	strcpy(buf_string, Patronymic);
-	return (buf_string);
+	return (patronymic);
 }
 
-//Метод  инициализации объекта класса
-bool FIO::Init(char buf_surname[], char buf_name[], char buf_patronymic[])
+bool Fio::Init(string bufSurname, string bufName, string bufPatronymic)
 {
-	//создаём объект класса FIO для проверки формата входных данных
-	FIO check;
+	Fio check;
 
-	//проверка на формат ввода
-	if (check.SetSurName(buf_surname) || check.SetName(buf_name) || check.SetPatronymic(buf_patronymic))
+	if (check.SetSurname(bufSurname) || check.SetName(bufName) || check.SetPatronymic(bufPatronymic))
 		return (true);
 	else
 	{
-		SetSurName(buf_surname);
-		SetName(buf_name);
-		SetPatronymic(buf_patronymic);
+		SetSurname(bufSurname);
+		SetName(bufName);
+		SetPatronymic(bufPatronymic);
 		return (false);
 	}
 }
 
-//Метод ввода полей объекта класса из консоли
-bool FIO::Read()
+bool Fio::Read()
 {
-	//создаём объект класса FIO для проверки формата входных данных
-	FIO check;
+	Fio check;
+	string bufString;
 
-	//создаём буферную строку для проверки формата входных данных
-	char buf_string[FIO_fields_size];
-
-	printf("Enter surname:\n");
-	fgets(buf_string, FIO_fields_size, stdin);
-	//если строка короче 30, то заменить "перенос на новую строку" "концом строки"
-	if (buf_string[strlen(buf_string) - 1] == '\n')
-		buf_string[strlen(buf_string) - 1] = '\0';
-	//если строка длиннее 30, то очистить входной поток
-	else rewind(stdin);
-
-	if (check.SetSurName(buf_string))
+	cout << "Enter surname:" << endl;
+	cin >> bufString;
+	if (check.SetSurname(bufString))
 		return (true);
-	else 
-	{
-		printf("Enter name:\n");
-		fgets(buf_string, FIO_fields_size, stdin);
-		//если строка короче 30, то заменить "перенос на новую строку" "концом строки"
-		if (buf_string[strlen(buf_string) - 1] == '\n')
-			buf_string[strlen(buf_string) - 1] = '\0';
-		//если строка длиннее 30, то очистить входной поток
-		else rewind(stdin);
 
-		if (check.SetName(buf_string))
-			return(true);
-		else
-		{
-			printf("Enter patronymic:\n");
-			fgets(buf_string, FIO_fields_size, stdin);
-			//если строка короче 30, то заменить "перенос на новую строку" "концом строки"
-			if (buf_string[strlen(buf_string) - 1] == '\n')
-				buf_string[strlen(buf_string) - 1] = '\0';
-			//если строка длиннее 30, то очистить входной поток
-			else rewind(stdin);
+	cout << "Enter name:" << endl;
+	cin >> bufString;
+	if (check.SetName(bufString))
+		return (true);
 
-			if (check.SetPatronymic(buf_string))
-				return(true);
+	cout << "Enter patronymic:" << endl;
+	cin >> bufString;
+	if (check.SetPatronymic(bufString))
+		return (true);
 
-			//если все проверки на формат успешно пройдены, то
-			//записываем полученные данные в поля объекта
-			else
-			{
-				SetSurName(check.GetSurName());
-				SetName(check.GetName());
-				SetPatronymic(check.GetPatronymic());
-				return (false);
-			}
-		}
-	}
+	SetSurname(check.GetSurname());
+	SetName(check.GetName());
+	SetPatronymic(check.GetPatronymic());
+	return (false);
 }
 
-//Метод вывода содержимого объекта класса в консоль
-void FIO::Display()
+void Fio::Display()
 {
-	printf("FIO: %s %s %s\n", SurName, Name, Patronymic);
+	cout << "FIO:" + surname + " " + name + " " + patronymic << endl;
 }
 
-#endif FIO_CPP
