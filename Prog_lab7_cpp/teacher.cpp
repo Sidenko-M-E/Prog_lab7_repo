@@ -60,6 +60,34 @@ string Teacher::GetFacultyName()
 	return (facultyName);
 }
 
+Teacher Teacher::operator+(int operatorWorkExp)
+{
+	Teacher resultObject;
+	resultObject.workExp = this->workExp + operatorWorkExp;
+	resultObject.degree = this->degree;
+	resultObject.facultyName = this->facultyName;
+	resultObject.humanField = this->humanField;
+	return (resultObject);
+}
+
+int operator+(int operatorWorkExp, Teacher operatorTeacher)
+{
+	return (operatorTeacher.workExp + operatorWorkExp);
+}
+
+Teacher& Teacher::operator++()//prefix
+{
+	this->workExp++;
+	return *this;
+}
+
+Teacher Teacher::operator++(int unused)//postfix
+{
+	Teacher resultObject = *this;
+	++*this;
+	return resultObject;
+}
+
 bool Teacher::Init(int bufWorkExp, string bufDegree, string bufFacultyName, Human bufHuman)
 {
 	Teacher check;
@@ -113,3 +141,4 @@ void Teacher::Display()
 	cout << "faculty name: " << facultyName << endl;
 	humanField.Display();
 }
+

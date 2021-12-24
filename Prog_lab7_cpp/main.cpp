@@ -32,6 +32,7 @@ int main()
 	myFio.Init("Popov", "Alexandr", "Dmitrievich");
 	myFio.Display();
 
+	/*
 	cout << endl << "---Read method---" << endl;
 	if (!myFio.Read())
 		myFio.Display();
@@ -43,7 +44,7 @@ int main()
 		cout << "error" << endl;
 	else
 		myFio.Display();
-
+	*/
 
 
 	cout << endl << "--------Human class--------" << endl;
@@ -54,6 +55,7 @@ int main()
 	else
 		myHuman.Display();
 	
+	/*
 	cout << "\n------Read method------\n";
 	if (myHuman.Read())
 		cout << "error\n";
@@ -66,9 +68,9 @@ int main()
 		cout << "error\n";
 	else
 		myHuman.Display();
+	*/
 
-
-
+	/*
 	cout << "\n--------Student class--------\n";
 	cout << "-------Init method-------\n";
 	Student myStudent;
@@ -90,9 +92,9 @@ int main()
 		cout << "error\n";
 	else
 		myStudent.Display();
+	*/
 
-
-
+	/*
 	cout << "\n--------Teacher class--------\n";
 	cout << "-------Init method-------\n";
 	Teacher myTeacher;
@@ -113,9 +115,30 @@ int main()
 		cout << "error\n";
 	else
 		myTeacher.Display();
+	*/
 
 
+	cout << "\n----operator overloading demo----\n";
+	Teacher demoTeacher;
+	demoTeacher.Init(40, "Candidate of Mathematical Sciences",
+		"FoMS", myHuman);
+	cout << "demoTeacher.WorkExp = " << demoTeacher.GetWorkExp() << endl;
 
+	demoTeacher = demoTeacher + 3;
+	cout << "\ndemoTeacher + 3 = new object of Teacher class:\n";
+	demoTeacher.Display();
+
+	cout << "\n4 + demoTeacher = " << 4 + demoTeacher << " of int\n";
+
+	cout << "\ndemoTeacher++\n";
+	demoTeacher++;
+	demoTeacher.Display();
+
+	cout << "\n++demoTeacher:\n";
+	++demoTeacher;
+	demoTeacher.Display();
+
+	/*
 	cout << "\n------Faculty class----------\n";
 	cout << "-------Init method-------\n";
 	Faculty myFaculty;
@@ -173,6 +196,7 @@ int main()
 		cout << "******************\n";
 		delete arrayOfDynamic[i];
 	}
+	*/
 	//Конец демонстрационного варианта
 	cout << "\nPress any key to exit.\n";
 	_getch();
