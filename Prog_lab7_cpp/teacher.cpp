@@ -71,7 +71,6 @@ bool Teacher::Init(int bufWorkExp, string bufDegree, string bufFacultyName, Huma
 		SetWorkExp(bufWorkExp);
 		SetDegree(bufDegree);
 		SetFacultyName(bufFacultyName);
-		SetFacultyName(check.GetFacultyName());
 		humanField = bufHuman;
 		return (false);
 	}
@@ -85,16 +84,17 @@ bool Teacher::Read()
 
 	cout << "Enter working experience:\n";
 	cin >> bufInt;
+	cin.ignore();
 	if (check.SetWorkExp(bufInt))
 		return (true);
 				
 	cout << "Enter scientific degree:\n";
-	cin >> bufString;
+	getline(cin, bufString);
 	if (check.SetDegree(bufString))
 		return (true);
 			
 	cout << "Enter faculty name:\n";
-	cin >> bufString;
+	getline(cin, bufString);
 	if (check.SetFacultyName(bufString))
 		return (true);
 	

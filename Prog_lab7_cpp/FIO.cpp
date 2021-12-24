@@ -86,17 +86,17 @@ bool Fio::Read()
 	string bufString;
 
 	cout << "Enter surname:" << endl;
-	cin >> bufString;
+	getline(cin, bufString);
 	if (check.SetSurname(bufString))
 		return (true);
 
 	cout << "Enter name:" << endl;
-	cin >> bufString;
+	getline(cin, bufString);
 	if (check.SetName(bufString))
 		return (true);
 
 	cout << "Enter patronymic:" << endl;
-	cin >> bufString;
+	getline(cin, bufString);
 	if (check.SetPatronymic(bufString))
 		return (true);
 

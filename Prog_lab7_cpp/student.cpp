@@ -106,21 +106,22 @@ bool Student::Read()
 
 	cout << "Enter course:\n";
 	cin >> bufInt;
+	cin.ignore();
 	if (check.SetCourse(bufInt))
 		return (true);
 		
 	cout << "Enter education programm:\n";
-	cin >> bufString;
+	getline(cin, bufString);
 	if (check.SetEduProg(bufString))
 		return (true);
 
 	cout << "Enter group:\n";
-	cin >> bufString;
+	getline(cin, bufString);
 	if (check.SetGroup(bufString))
 		return (true);
 				
 	cout << "Enter faculty name:\n";
-	cin >> facultyName;
+	getline(cin, bufString);
 	if (check.SetFacultyName(bufString))
 		return (true);
 

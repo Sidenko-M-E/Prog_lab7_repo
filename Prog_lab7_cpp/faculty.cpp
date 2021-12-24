@@ -210,7 +210,7 @@ bool Faculty::Read()
 	int bufInt;
 
 	cout << "Enter faculty name:\n";
-	cin >> bufString;
+	getline(cin, bufString);
 	if (check.SetFacultyName(bufString))
 		return (true);
 	

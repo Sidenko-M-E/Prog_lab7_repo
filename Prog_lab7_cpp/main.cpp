@@ -39,7 +39,7 @@ int main()
 		cout << "error" << endl;
 
 	cout << endl << "------Set methods-------" << endl;
-	if (myFio.SetSurname("Ivanov") || myFio.SetName("Ivan") || myFio.SetPatronymic(" Ivanovich "))
+	if (myFio.SetSurname("Ivanov") || myFio.SetName("Ivan") || myFio.SetPatronymic("Ivanovich"))
 		cout << "error" << endl;
 	else
 		myFio.Display();
@@ -47,7 +47,7 @@ int main()
 
 
 	cout << endl << "--------Human class--------" << endl;
-	cout << endl << "-------Init method-------" << endl;
+	cout << "-------Init method-------" << endl;
 	Human myHuman;
 	if(myHuman.Init(1913, 19, 70, 182, 'F', myFio))
 		cout << "error" << endl;
@@ -97,7 +97,7 @@ int main()
 	cout << "-------Init method-------\n";
 	Teacher myTeacher;
 	if (myTeacher.Init(40, "Candidate of Mathematical Sciences", 
-		"CS-091", myHuman))
+		"FoMS", myHuman))
 		cout << "error\n";
 	else
 		myTeacher.Display();

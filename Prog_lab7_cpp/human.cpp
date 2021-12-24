@@ -127,12 +127,13 @@ bool Human::Read()
 		return (true);
 			
 	cout << "Enter weight:" << endl;
-	cin >> bufDouble;		
+	cin >> bufDouble;	
 	if (check.SetWeight(bufDouble))
 		return (true);
 
 	cout << "Enter gender:" << endl;
 	cin >> bufChar;
+	cin.ignore();
 	if (check.SetGender(bufChar))
 		return(true);
 
