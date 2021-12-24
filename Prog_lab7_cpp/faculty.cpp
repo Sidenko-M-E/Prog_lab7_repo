@@ -178,6 +178,13 @@ double Faculty::GetStudToTeachRatio()
 	return(((double)quantityOfStudents) / ((double)quantityOfTeachers));
 }
 
+Faculty Faculty::GetWithMoreCandidates(Faculty buf)
+{
+	if ((*this).GetQuantityOfCandidates() >= buf.GetQuantityOfCandidates())
+		return (*this);
+	else
+		return (buf);
+}
 
 
 bool Faculty::Init(string bufFacultyName, int studentsQuantity, int bachelorsQuantity, int mastersQuantity, int teachersQuantity, int candidatesQuantity, int doctorsQuanity, int discpilinesQuantity)

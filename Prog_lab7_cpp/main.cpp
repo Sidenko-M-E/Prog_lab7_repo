@@ -117,7 +117,7 @@ int main()
 		myTeacher.Display();
 	*/
 
-
+	/*
 	cout << "\n----operator overloading demo----\n";
 	Teacher demoTeacher;
 	demoTeacher.Init(40, "Candidate of Mathematical Sciences",
@@ -137,8 +137,8 @@ int main()
 	cout << "\n++demoTeacher:\n";
 	++demoTeacher;
 	demoTeacher.Display();
-
-	/*
+	*/
+	
 	cout << "\n------Faculty class----------\n";
 	cout << "-------Init method-------\n";
 	Faculty myFaculty;
@@ -147,6 +147,7 @@ int main()
 	else
 		myFaculty.Display();
 
+	/*
 	cout << "\n------Read method------\n";
 	if (myFaculty.Read())
 		cout << "error\n";
@@ -157,15 +158,26 @@ int main()
 	myFaculty.SetStudentsInfo(300, 270, 30);
 	myFaculty.SetTeachersInfo(40, 33, 7);
 	myFaculty.Display();
-
+	*/
+	/*
 	cout << "\n----processing by functions----\n";
 	cout.precision(2);
 	cout << "Procent of masters on faculty: " << myFaculty.GetProcentOfMasters() << endl;
 	cout << "Procent of doctors on faculty: " << myFaculty.GetProcentOfDoctors() << endl;
 	cout << "Students to teachers ratio: " << myFaculty.GetStudToTeachRatio() << endl;
+	*/
+	cout << "\nLet's compare two faculties to find the one...\n";
+	cout << "...that have the largest number of candidates on it.\n";
+	Faculty demoFaculty;
+	demoFaculty.Init("FoMS", 230, 175, 15, 30, 15, 15, 80);
+	cout << "First faculty:\n";
+	myFaculty.Display();
+	cout << "Second faculty:\n";
+	demoFaculty.Display();
+	cout << "And result is...\n";
+	(myFaculty.GetWithMoreCandidates(demoFaculty)).Display();
 
-
-
+	/*
 	cout << "\n------dynamic memmory demo------\n";
 	cout << "----dynamic array of objects----\n";
 	int count;

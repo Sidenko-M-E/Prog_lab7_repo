@@ -40,6 +40,7 @@ public:
 	double GetProcentOfMasters();
 	double GetProcentOfDoctors();
 	double GetStudToTeachRatio();
+	Faculty GetWithMoreCandidates(Faculty buf);
 
 	bool Init(string bufFacultyName, int studentsQuantity, 
 		int bachelorsQuantity, int mastersQuantity, 
