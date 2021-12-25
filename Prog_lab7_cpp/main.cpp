@@ -26,12 +26,14 @@
 
 int main()
 {
+
+	/*
 	cout << "--------Fio class--------" << endl;
 	cout << "------Init method-------" << endl;
 	Fio myFio;
 	myFio.Init("Popov", "Alexandr", "Dmitrievich");
 	myFio.Display();
-
+	*/
 	/*
 	cout << endl << "---Read method---" << endl;
 	if (!myFio.Read())
@@ -46,15 +48,15 @@ int main()
 		myFio.Display();
 	*/
 
-
+	/*
 	cout << endl << "--------Human class--------" << endl;
 	cout << "-------Init method-------" << endl;
 	Human myHuman;
-	if(myHuman.Init(1913, 19, 70, 182, 'F', myFio))
+	if(myHuman.Init(1913, 19, 182, 70, 'F', myFio))
 		cout << "error" << endl;
 	else
 		myHuman.Display();
-	
+	*/
 	/*
 	cout << "\n------Read method------\n";
 	if (myHuman.Read())
@@ -138,15 +140,15 @@ int main()
 	++demoTeacher;
 	demoTeacher.Display();
 	*/
-	
+
 	cout << "\n------Faculty class----------\n";
 	cout << "-------Init method-------\n";
 	Faculty myFaculty;
-	if (myFaculty.Init("FoHS", 180, 145, 35, 40, 20, 5, 70))
-		cout << "error\n";
-	else
-		myFaculty.Display();
-
+	if (myFaculty.Init("FoHS", 180, 145, 35, 40, 20, 5, 70));
+	//	cout << "error\n";
+	//else
+	//	myFaculty.Display();
+	
 	/*
 	cout << "\n------Read method------\n";
 	if (myFaculty.Read())
@@ -166,17 +168,42 @@ int main()
 	cout << "Procent of doctors on faculty: " << myFaculty.GetProcentOfDoctors() << endl;
 	cout << "Students to teachers ratio: " << myFaculty.GetStudToTeachRatio() << endl;
 	*/
+	/*
 	cout << "\nLet's compare two faculties to find the one...\n";
 	cout << "...that have the largest number of candidates on it.\n";
 	Faculty demoFaculty;
-	demoFaculty.Init("FoMS", 230, 175, 15, 30, 15, 15, 80);
+	demoFaculty.Init("FoMS", 230, 175, 15, 30, 45, 15, 80);
 	cout << "First faculty:\n";
 	myFaculty.Display();
 	cout << "Second faculty:\n";
 	demoFaculty.Display();
 	cout << "And result is...\n";
 	(myFaculty.GetWithMoreCandidates(demoFaculty)).Display();
+	*/
+	cout << "\nLets check the faculties to find the one...\n";
+	cout << "...that have enough candidates on it.\n";
+	bool result;
 
+	cout << "\nFirst faculty:\n";
+	myFaculty.Display();
+	cout << "\nLets check the first faculty:\n";
+	myFaculty.IsHavingEnoughCandidates(&result);
+	if (result)
+		cout << "First faculty have enough candidates.\n";
+	else
+		cout << "First faculty have not enough candidates.\n";
+
+	cout << "\nSecond faculty:\n";
+	Faculty demoFaculty;
+	demoFaculty.Init("FoMS", 230, 175, 15, 30, 45, 15, 80);
+	demoFaculty.Display();
+	cout << "\nLets check the second faculty\n";
+	demoFaculty.IsHavingEnoughCandidates(result);
+	if (result)
+		cout << "Second faculty have enough candidates.\n";
+	else
+		cout << "Second faculty have not enough candidates.\n";
+		
 	/*
 	cout << "\n------dynamic memmory demo------\n";
 	cout << "----dynamic array of objects----\n";

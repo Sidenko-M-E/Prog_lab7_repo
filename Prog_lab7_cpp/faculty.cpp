@@ -186,6 +186,21 @@ Faculty Faculty::GetWithMoreCandidates(Faculty buf)
 		return (buf);
 }
 
+void Faculty::IsHavingEnoughCandidates(bool *result)
+{
+	if (quantityOfCandidates > 30)
+		*result = true;
+	else
+		*result = false;
+}
+
+void Faculty::IsHavingEnoughCandidates(bool &result)
+{
+	if (quantityOfCandidates > 30)
+		result = true;
+	else
+		result = false;
+}
 
 bool Faculty::Init(string bufFacultyName, int studentsQuantity, int bachelorsQuantity, int mastersQuantity, int teachersQuantity, int candidatesQuantity, int doctorsQuanity, int discpilinesQuantity)
 {

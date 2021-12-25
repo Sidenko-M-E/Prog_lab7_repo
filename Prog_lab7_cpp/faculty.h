@@ -41,6 +41,8 @@ public:
 	double GetProcentOfDoctors();
 	double GetStudToTeachRatio();
 	Faculty GetWithMoreCandidates(Faculty buf);
+	void IsHavingEnoughCandidates(bool *result);
+	void IsHavingEnoughCandidates(bool &result);
 
 	bool Init(string bufFacultyName, int studentsQuantity, 
 		int bachelorsQuantity, int mastersQuantity, 
